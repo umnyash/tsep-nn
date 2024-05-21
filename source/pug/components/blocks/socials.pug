@@ -1,0 +1,22 @@
+mixin socials__logo(src, alt, width, height)
+  svg.socials__logo(width= width height= height role='img' aria-label= alt loading='lazy')
+    use(href= src)
+
+mixin socials__item(name, href)
+  li.socials__item
+    a.socials__link(href= href target='_blank' rel='noopener' class=`socials__link--${name}`)
+      svg.socials__link-background(width='48' height='48' aria-hidden='true' loading='lazy')
+        use(href='img/icons.svg#socials_hexagon')
+      case name
+        when 'vk'
+          +socials__logo('img/icons.svg#socials_vk', 'VK.', 18, 11)
+        when 'telegram'
+          +socials__logo('img/icons.svg#socials_telegram', 'Telegram.', 18, 16)
+        when 'youtube'
+          +socials__logo('img/icons.svg#socials_youtube', 'YouTube.', 18, 13)
+
+mixin socials
+  ul.socials&attributes(attributes)
+    +socials__item('vk', '#!')
+    +socials__item('telegram', '#!')
+    +socials__item('youtube', '#!')

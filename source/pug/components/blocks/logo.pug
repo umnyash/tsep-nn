@@ -1,0 +1,7 @@
+mixin logo(type)
+  a.logo(href= pageClass === 'index-page' ? false : 'index.html')&attributes(attributes)
+    if type === 'image'
+      img.logo__image(src='img/image-logo.webp' width='57' height='49' alt='Логотип ЦЕПЬ-НН.')
+    else
+      svg.logo__image(width='196' height='48' role='img' aria-label='Логотип ЦЕПЬ-НН.')
+        use(href='img/text-logo.svg#logo')

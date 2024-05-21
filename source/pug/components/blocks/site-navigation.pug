@@ -1,0 +1,23 @@
+mixin site-navigation__item(text, href, page)
+  li.site-navigation__item
+    a.site-navigation__link(class= pageClass === page ? 'site-navigation__link--current' : false href= pageClass === page ? false : href data-text= text)&attributes(attributes)= text
+
+mixin site-navigation__sub-menu-item(text, href, page)
+  li.site-navigation__sub-menu-item
+    a.site-navigation__sub-menu-link(class= pageClass === page ? 'site-navigation__link--current' : false href= pageClass === page ? false : href data-text= text)&attributes(attributes)= text
+
+mixin site-navigation
+  ul.site-navigation&attributes(attributes)
+    +site-navigation__item('Продукция', 'products.html', 'products-page')
+    +site-navigation__item('О компании', 'company.html', 'company-page')
+    li.site-navigation__item.site-navigation__item--with-sub-menu
+      button.site-navigation__sub-menu-button(type='button' aria-expanded='false' aria-controls='site-navigation-clients-sub-menu' data-text='Клиентам') Клиентам
+      ul.site-navigation__sub-menu#site-navigation-clients-sub-menu
+        +site-navigation__sub-menu-item('Оставить заявку', 'request.html', 'request-page')
+        +site-navigation__sub-menu-item('Новости', 'news.html', 'news-page')
+        +site-navigation__sub-menu-item('Частые вопросы', 'faq.html', 'faq-page')
+        +site-navigation__sub-menu-item('Документы', 'documents.html', 'documents-page')
+        +site-navigation__sub-menu-item('Доставка и оплата', 'delivery-and-payment.html', 'delivery-and-payment-page')
+    +site-navigation__item('Вакансии', 'vacancies.html', 'vacancies-page')
+    li.site-navigation__item
+      a.site-navigation__link(href='tel:+78314141817' rel='nofollow noopener' data-text='+7 (831) 414-18-17') +7 (831) 414-18-17

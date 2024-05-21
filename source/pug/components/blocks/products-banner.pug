@@ -1,0 +1,12 @@
+mixin products-banner
+  .banner&attributes(attributes)
+    .banner__inner
+      picture.banner__background(aria-hidden='true')
+        source(media='(min-width: 1281px)' srcset='img/backgrounds/products-desktop.webp 1x, img/backgrounds/products-desktop@2x.webp 2x')
+        source(media='(min-width: 421px)' srcset='img/backgrounds/products-laptop.webp 1x, img/backgrounds/products-laptop@2x.webp 2x')
+        img.banner__background-image(src='img/backgrounds/products.webp' srcset='img/backgrounds/products@2x.webp 2x' alt='')
+      h1.banner__heading.page-heading
+        span.visually-hidden Наша продукция
+        picture.page-heading__image-wrapper(aria-hidden='true')
+          source(media='(min-width: 660px)' srcset='img/texts/our-products.svg')
+          img.page-heading__image(src='img/texts/our-products-short.svg' alt='')

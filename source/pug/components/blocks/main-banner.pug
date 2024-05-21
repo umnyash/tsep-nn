@@ -1,0 +1,13 @@
+mixin main-banner
+  .main-banner&attributes(attributes)
+    .main-banner__inner
+      .main-banner__background-wrapper
+        picture.main-banner__background(aria-hidden='true')
+          source(media='(min-width: 1580px)' srcset=`img/backgrounds/chain-desktop.webp 1x, img/backgrounds/chain-desktop@2x.webp 2x`)
+          source(media='(min-width: 421px)' srcset=`img/backgrounds/chain-laptop.webp 1x, img/backgrounds/chain-laptop@2x.webp 2x`)
+          img.main-banner__background-image(src='img/backgrounds/chain.webp' srcset='img/backgrounds/chain@2x.webp 2x' alt='')
+      h1.main-banner__heading.page-heading
+        span.page-heading__part Производство, выпуск#[br] и реализация #[span.visually-hidden стальных цепей]
+        picture.page-heading__image-wrapper(aria-hidden='true')
+          source(media='(min-width: 660px)' srcset=`img/texts/steel-chains.svg`)
+          img.page-heading__image(src='img/texts/steel-chains-short.svg' alt='')

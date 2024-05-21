@@ -1,0 +1,9 @@
+extends layout/layout
+
+block variables
+  - var title = 'Продукция'
+  - var pageClass = 'products-page'
+  - var siteHeaderDarkTheme = true
+
+block content
+  +products-banner(class='page__banner')

@@ -1,3 +1,9 @@
 mixin site-header
-  header.site-header&attributes(attributes)
-    | site-header
+  header.site-header(class= siteHeaderDarkTheme && 'site-header--dark')&attributes(attributes)
+    .site-header__inner
+      nav.site-header__main-navigation
+        .site-header__panel
+          .site-header__panel-inner
+            +logo(class='site-header__logo')
+            +burger(class='site-header__burger' aria-controls='site-header-site-navigation')
+        +site-navigation(class='site-header__site-navigation' id='site-header-site-navigation')

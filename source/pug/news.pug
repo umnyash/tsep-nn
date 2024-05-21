@@ -1,0 +1,11 @@
+extends layout/layout
+
+block variables
+  - var title = 'Новости'
+  - var pageClass = 'news-page'
+
+block content
+  .page-heading
+    .container
+      h1.visually-hidden Новости
+      img.page-heading__image(src='img/texts/news.svg' alt='Новости')

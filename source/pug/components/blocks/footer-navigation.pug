@@ -1,0 +1,34 @@
+mixin footer-navigation__link(text, href, page)
+  a.footer-navigation__link(href= !(pageClass === page) && href)&attributes(attributes)= text
+
+mixin footer-navigation__item(text, href, page)
+  li.footer-navigation__item
+    +footer-navigation__link(text, href, page)
+
+mixin footer-navigation
+  dl.footer-navigation&attributes(attributes)
+    .footer-navigation__group
+      dt.footer-navigation__group-heading
+        +footer-navigation__link('Продукция', 'products.html', 'products-page')
+      dd.footer-navigation__list-wrapper
+        ul.footer-navigation__list
+          +footer-navigation__item('Цепи противоскольжения', 'catalog.html', 'catalog-page')
+          +footer-navigation__item('Цепи для сельского хозяйства', 'catalog.html', 'catalog-page')
+          +footer-navigation__item('Цепи круглозвенные нормальной прочности', 'catalog.html', 'catalog-page')
+          +footer-navigation__item('Цепи круглозвенные высокопрочные', 'catalog.html', 'catalog-page')
+    .footer-navigation__group
+      dt.footer-navigation__group-heading
+        +footer-navigation__link('О компании', 'company.html', 'company-page')
+      dd.footer-navigation__list-wrapper
+        ul.footer-navigation__list
+          +footer-navigation__item('Производство', '#!')
+          +footer-navigation__item('Новости', 'news.html', 'news-page')
+          +footer-navigation__item('Вакансии', 'vacancies.html', 'vacancies-page')
+          +footer-navigation__item('Контакты', 'company.html#contacts')
+    .footer-navigation__group
+      dt.footer-navigation__group-heading Клиентам
+      dd.footer-navigation__list-wrapper
+        ul.footer-navigation__list
+          +footer-navigation__item('Доставка и оплата', 'delivery-and-payment.html', 'delivery-and-payment-page')
+          +footer-navigation__item('Оставить заявку', 'request.html', 'request-page')
+          +footer-navigation__item('Частые вопросы', 'faq.html', 'faq-page')

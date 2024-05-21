@@ -1,0 +1,32 @@
+.page-heading {
+  font: 400 18px/1 $main-font-family;
+  text-transform: uppercase;
+
+  @media (min-width: $laptop-width) {
+    font-size: 32px;
+  }
+
+  @media (min-width: $desktop-width) {
+    font-size: 40px;
+  }
+}
+
+.page-heading__part {
+  display: block;
+  margin: 0 0 10px;
+
+  @media (min-width: $laptop-width) {
+    margin: 0 0 20px;
+  }
+}
+
+.page-heading__image-wrapper {
+  display: block;
+}
+
+.page-heading__image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}

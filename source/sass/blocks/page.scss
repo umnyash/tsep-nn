@@ -1,0 +1,42 @@
+.page__site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.page__body {
+  min-width: 320px;
+  margin: 0;
+  font: 400 16px/16px $main-font-family;
+  color: var(--text-color);
+  background: var(--background-color);
+
+  &--no-scroll {
+    overflow: hidden;
+  }
+
+  @media (min-width: $laptop-width) {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.page__banner {
+  height: 700px;
+  min-height: 100vh;
+  max-height: 100vh;
+
+  @supports (min-height: 100dvh) {
+    min-height: 100dvh;
+  }
+
+  @supports (max-height: 100dvh) {
+    max-height: 100dvh;
+  }
+
+  @media (min-width: $desktop-width) {
+    height: 900px;
+  }
+}

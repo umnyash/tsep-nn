@@ -1,0 +1,50 @@
+.main-banner {
+  background: var(--background-accent-color);
+}
+
+.main-banner__inner {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  max-width: $centerer-max-width;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.main-banner__background-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.main-banner__background {
+  display: block;
+  height: 100%;
+  max-width: 890px;
+  margin: 0 0 0 auto;
+
+  @media (min-width: $desktop-width) {
+    max-width: 1150px;
+  }
+}
+
+.main-banner__background-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.main-banner__heading {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto var(--edge-indent) 10px;
+
+  @media (min-width: $laptop-width) {
+    margin-bottom: 0;
+  }
+}

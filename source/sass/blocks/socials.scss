@@ -1,0 +1,46 @@
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+}
+
+.socials__link {
+  position: relative;
+  display: block;
+  color: inherit;
+}
+
+.socials__link-background {
+  stroke: currentColor;
+  fill: transparent;
+  opacity: 0.2;
+  transition-property: stroke, fill, opacity;
+  transition-duration: $little-interaction-duration;
+}
+
+.socials__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 18px;
+  max-height: 18px;
+  fill: currentColor;
+  opacity: 0.4;
+  transform: translate(-50%, -50%);
+  transition-property: fill, opacity;
+  transition-duration: $little-interaction-duration;
+}
+
+.socials__link:hover {
+  .socials__link-background {
+    stroke: var(--accent-color);
+    fill: var(--accent-color);
+    opacity: 1;
+  }
+
+  .socials__logo {
+    fill: var(--text-color);
+    opacity: 1;
+  }
+}

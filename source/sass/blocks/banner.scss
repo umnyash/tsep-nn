@@ -1,0 +1,49 @@
+.banner {
+  background: var(--background-dark-color);
+}
+
+.banner__inner {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  height: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.banner__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+}
+
+.banner__background-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.banner__heading {
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto var(--edge-indent) 20px;
+
+  @media (min-width: $desktop-width) {
+    max-width: $centerer-max-width;
+    margin: auto auto 20px;
+  }
+}

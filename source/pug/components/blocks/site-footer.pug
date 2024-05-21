@@ -1,3 +1,15 @@
 mixin site-footer
   footer.site-footer&attributes(attributes)
-    | site-footer
+    img.site-footer__company(src='img/texts/tsep-nn.svg' alt='ЦЕПЬ-НН.')
+    .site-footer__inner.container
+      +footer-navigation(class='site-footer__navigation')
+      .site-footer__contacts
+        a.site-footer__contacts-link(href='tel:+78314141817' rel='noopener') +7 (831) 414-18-17
+        a.site-footer__contacts-link(href='mailto:tsep-nn@list.ru' rel='noopener') tsep-nn@list.ru
+        +socials(class='site-footer__contacts-socials')
+      +logo('image')(class='site-footer__logo')
+      a.site-footer__copyright(href='#!' rel='noopener') Политика конфиденциальности и условия обработки персональных данных.
+      a.site-footer__developer(href='https://omniagency.ru' rel='nofollow noopener')
+        .site-footer__developer-text Разработка сайта
+        span.site-footer__developer-logo-wrapper
+          img.site-footer__developer-logo(src='img/dev-logo.svg' width='93' height='23' alt='Логотип OMNI.')
