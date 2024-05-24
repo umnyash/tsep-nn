@@ -1,0 +1,10 @@
+.badge {
+  font: 400 16px/18px $main-font-family;
+  letter-spacing: -0.02em;
+  opacity: 0.4;
+
+  @media (min-width: $laptop-width) {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}

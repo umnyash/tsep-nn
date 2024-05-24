@@ -1,19 +1,29 @@
 :root {
   --text-color: #252525;
+  --text-color-20: rgb(37, 37, 37, 0.2);
   --text-light-color: #ffffff;
   --background-color: #f5f5f5;
+  --background-alter-color: #ffffff;
   --background-dark-color: #252525;
   --background-accent-color: #ff7d35;
   --accent-color: #ff7d35;
 
   --edge-indent: 10px;
+
   --site-header-height: 60px;
 
   @media (min-width: $laptop-width) {
     --site-header-height: 67px;
+
+    --section-column-count: 3;
+    --section-column-gap: 10px;
+    --section-heading-left-indent: 212px;
   }
 
   @media (min-width: $desktop-width) {
     --edge-indent: 20px;
+
+    --section-column-gap: 20px;
+    --section-heading-left-indent: 263px;
   }
 }

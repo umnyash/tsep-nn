@@ -1,0 +1,64 @@
+.button {
+  display: inline-flex;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font: 500 16px/1 $main-font-family;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    margin: 0 0 0 12px;
+    background: currentColor;
+    mask: url("../img/icons.svg#arrow_small");
+  }
+
+  @media (min-width: $desktop-width) {
+    font-size: 18px;
+  }
+}
+
+.button--secondary-mobile {
+  @media (max-width: ($laptop-width - 1)) {
+    padding: 20px 40px;
+    border-radius: 1000px;
+    color: var(--text-color);
+    background: var(--background-alter-color);
+    transition: color $little-interaction-duration ease;
+
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+
+  @media (min-width: $laptop-width) {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -5px;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform 400ms ease;
+    }
+
+    &:hover::before {
+      transform-origin: left;
+      transform: scaleX(1);
+    }
+  }
+}
