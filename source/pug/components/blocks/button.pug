@@ -1,5 +1,7 @@
 mixin button({tag, text, type, href, target, rel})
   if tag === 'button'
-    button.button(type= type)&attributes(attributes)= text
+    button.button(type= type)&attributes(attributes)
+      span.button__inner= text
   else if tag === 'a'
-    a.button(href= href target= target rel= rel)&attributes(attributes)= text
+    a.button(href= href target= target rel= rel)&attributes(attributes)
+      span.button__inner= text

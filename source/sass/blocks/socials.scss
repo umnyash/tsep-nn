@@ -16,7 +16,7 @@
   fill: transparent;
   opacity: 0.2;
   transition-property: stroke, fill, opacity;
-  transition-duration: $little-interaction-duration;
+  transition-duration: $medium-interaction-duration;
 }
 
 .socials__logo {
@@ -29,7 +29,7 @@
   opacity: 0.4;
   transform: translate(-50%, -50%);
   transition-property: fill, opacity;
-  transition-duration: $little-interaction-duration;
+  transition-duration: $medium-interaction-duration;
 }
 
 .socials__link:hover {

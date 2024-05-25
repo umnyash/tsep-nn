@@ -48,7 +48,7 @@
 .footer-navigation__link {
   text-decoration: none;
   color: inherit;
-  transition: color $little-interaction-duration;
+  transition: color $medium-interaction-duration;
 
   &[href]:hover {
     color: var(--accent-color);
