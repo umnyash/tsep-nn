@@ -1,0 +1,41 @@
+.advantages {
+  font: 400 16px/1 $main-font-family;
+
+  @media (min-width: $laptop-width) {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.advantages__inner {
+  @media (min-width: $laptop-width) {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+  }
+}
+
+.advantages__badge {
+  margin: 0;
+
+  @media (min-width: $laptop-width) {
+    position: absolute;
+    top: -3px;
+    left: var(--edge-indent);
+  }
+}
+
+.advantages__statistics {
+  @media (min-width: $laptop-width) {
+    grid-column: 2 / -1;
+  }
+}
+
+.advantages__badge + .advantages__statistics {
+  margin-top: 16px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 0;
+  }
+}

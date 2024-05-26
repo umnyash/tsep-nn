@@ -17,7 +17,7 @@
 }
 
 .company-preview__badge {
-  margin: 0 0 11px;
+  margin: 0;
 
   @media (min-width: $laptop-width) {
     position: absolute;
@@ -27,34 +27,29 @@
 }
 
 .company-preview__heading {
-  margin: 0 0 5px;
+  margin: 0;
 
   @media (min-width: $laptop-width) {
     grid-column: 1 / -1;
-    margin: 0 var(--section-heading-left-indent) 11px;
+    margin: 0 var(--section-heading-left-indent);
   }
 }
 
 .company-preview__text {
-  margin: 0 0 19px;
+  margin: 0;
   letter-spacing: -0.02em;
 
   @media (min-width: $laptop-width) {
     grid-column: 2 / -1;
     max-width: 500px; // 462 - 506
-    margin: 0 0 39px;
   }
 }
 
 .company-preview__statistics {
-  margin: 0 0 20px;
-
   @media (min-width: $laptop-width) {
     grid-column: 2 / -1;
-    margin: 0;
   }
 }
-
 
 .company-preview__button {
   width: 100%;
@@ -64,5 +59,47 @@
     width: auto;
     top: 9px;
     right: var(--edge-indent);
+  }
+}
+
+// Остпупы
+
+.company-preview__badge + .company-preview__heading {
+  margin-top: 11px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 0;
+  }
+}
+
+.company-preview__heading + .company-preview__text {
+  margin-top: 5px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 11px;
+  }
+}
+
+.company-preview__text + .company-preview__text {
+  margin-top: 10px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 20px;
+  }
+}
+
+.company-preview__text + .company-preview__statistics {
+  margin-top: 19px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 39px;
+  }
+}
+
+.company-preview__statistics + .company-preview__button {
+  margin-top: 20px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 0;
   }
 }

@@ -41,3 +41,15 @@
     height: 900px;
   }
 }
+
+.page__content > * {
+  margin-bottom: 70px;
+
+  @media (min-width: $laptop-width) {
+    margin-bottom: 100px;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 120px;
+  }
+}

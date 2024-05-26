@@ -1,0 +1,13 @@
+mixin chapter({heading, badge, texts})
+  -
+    var headingClasses = []
+    if (heading.size) headingClasses.push(`heading--${heading.size}`);
+    if (heading.align) headingClasses.push(`heading--${heading.align}`);
+    var headingClassesString = headingClasses.join(' ');
+
+  section.chapter
+    .chapter__inner.container
+      h2.chapter__badge.badge= `( ${badge} )`
+      p.chapter__heading.heading(class= headingClassesString)!= heading.text
+      each text in texts
+        p.chapter__text!= text

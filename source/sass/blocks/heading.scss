@@ -29,3 +29,9 @@
     line-height: 52px;
   }
 }
+
+.heading--justify {
+  @media (min-width: $laptop-width) {
+    text-align: justify;
+  }
+}

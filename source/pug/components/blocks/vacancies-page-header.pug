@@ -1,0 +1,10 @@
+mixin vacancies-page-header
+  .page-header&attributes(attributes)
+    .page-header.container
+      h1.page-header__heading.page-heading
+        picture.page-heading__image-wrapper(aria-hidden='true')
+          img.page-heading__image(src='img/texts/vacancies.svg' alt='')
+      picture.page-header__image-wrapper(aria-hidden='true')
+        source(media='(min-width: 1281px)' srcset=`img/page-header/vacancies-desktop.webp 1x, img/page-header/vacancies-desktop@2x.webp 2x`)
+        source(media='(min-width: 421px)' srcset=`img/page-header/vacancies-laptop.webp 1x, img/page-header/vacancies-laptop@2x.webp 2x`)
+        img.page-header__image(src='img/page-header/vacancies.webp' srcset='img/page-header/vacancies@2x.webp 2x' alt='')

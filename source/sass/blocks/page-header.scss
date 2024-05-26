@@ -1,0 +1,25 @@
+.page-header__heading {
+  margin: 0;
+}
+
+.page-header__image-wrapper {
+  display: block;
+  height: 136px;
+  margin: 18px 0 0;
+
+  @media (min-width: 421px) {
+    height: auto;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-top: 36px;
+  }
+}
+
+.page-header__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

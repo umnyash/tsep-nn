@@ -8,6 +8,10 @@
     grid-template-columns: repeat(3, auto);
     gap: 40px;
   }
+
+  @media (min-width: $desktop-width) {
+    line-height: 18px;
+  }
 }
 
 .footer-navigation__group:first-child {
