@@ -1,0 +1,23 @@
+.news__page-heading {
+  margin: 0 0 20px;
+
+  @media (min-width: $laptop-width) {
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 40px;
+  }
+}
+
+.news__heading {
+  margin: 0 0 14px;
+
+  @media (min-width: $laptop-width) {
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 30px;
+  }
+}

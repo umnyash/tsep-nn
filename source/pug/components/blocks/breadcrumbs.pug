@@ -1,0 +1,8 @@
+mixin breadcrumbs(links)
+  .breadcrumbs
+    ol.breadcrumbs__list.container&attributes(attributes)
+      li.breadcrumbs__item
+        a.breadcrumbs__link(href='index.html') Главная
+      each link in links
+        li.breadcrumbs__item
+          a.breadcrumbs__link(href= link.href)= link.text

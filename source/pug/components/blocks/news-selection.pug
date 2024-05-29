@@ -15,10 +15,10 @@
   ];
 
 mixin news-selection
-  section.selection.selection--news
+  section.selection.selection--news&attributes(attributes)
     .selection__inner.container
       h2.selection__badge.badge ( Что нового )
-      p.selection__heading.heading Последние новости
+      p.selection__heading.heading.heading--text-indent_left Последние новости
       .selection__links
         ul.selection__list.selection__list--alter
           each item in newsSelectionItems

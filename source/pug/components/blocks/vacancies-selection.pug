@@ -2,7 +2,7 @@ mixin vacancies-selection
   section.selection&attributes(attributes)
     .selection__inner.container
       h2.selection__badge.badge ( Мы ищем специалистов )
-      p.selection__heading.heading Вакансии
+      p.selection__heading.heading.heading--text-indent_left Вакансии
       .selection__links
         ul.selection__list
           each item in [1, 2, 3, 4]
@@ -12,4 +12,4 @@ mixin vacancies-selection
                 .selection__item-text от 50 000 руб.
                 .selection__item-text.selection__item-text--weak Нижний Новгород
               +button({tag: 'a', text: 'Подробнее', href: 'https://hh.ru', target: '_blank', rel: 'noopener'})(class='selection__item-link button--simple button--expand')
-        +button({tag: 'a', text: 'Смотреть все новости', href: 'news.html'})(class='selection__links-button button--secondary')
+        +button({tag: 'a', text: 'Смотреть все новости', href: 'news.html'})(class='selection__links-button button--down button--secondary')

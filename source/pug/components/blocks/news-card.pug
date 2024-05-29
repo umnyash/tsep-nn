@@ -1,0 +1,12 @@
+mixin news-card(cardHeadingLevel, {image, image2x})
+  article.news-card&attributes(attributes)
+    if cardHeadingLevel === 2
+      h2.news-card__heading
+        a.news-card__heading-link(href='article.html') Цепи противоскольжения с&nbsp;шипами
+    else if cardHeadingLevel === 3
+      h3.news-card__heading
+        a.news-card__heading-link(href='article.html') Цепи противоскольжения с&nbsp;шипами
+    time.news-card__date(datetime='2024-01-16') 16 января, 2024
+    p.news-card__text Появились новые модели цепей противоскольжения тип "лесенка", "зигзаг", "ромб"
+    picture.news-card__image-wrapper
+      img.news-card__image(src= image srcset= `${image2x} 2x` alt='' loading='lazy')

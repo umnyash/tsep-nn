@@ -1,0 +1,12 @@
+mixin news-list({cardHeadingLevel, news, withButton, firstCardWide})
+  .news-list&attributes(attributes)
+    ul.news-list__items
+      each newsItem, index in news
+        if (index === 0 && firstCardWide)
+          li.news-list__item(class='news-list__item--wide')
+            +news-card(cardHeadingLevel, newsItem)(class='news-card--wide')
+        else
+          li.news-list__item
+            +news-card(cardHeadingLevel, newsItem)
+    if withButton
+      +button({tag: 'a', text: 'Открыть ещё', href: '#'})(class='news-list__button button--down button--secondary')

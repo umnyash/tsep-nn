@@ -1,0 +1,30 @@
+.article__header {
+  margin: 0 0 20px;
+
+  @media (min-width: $laptop-width) {
+    margin-bottom: 25px;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 21px;
+  }
+}
+
+.article__heading {
+  margin: 0;
+}
+
+.article__date {
+  display: block;
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  opacity: 0.4;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 11px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

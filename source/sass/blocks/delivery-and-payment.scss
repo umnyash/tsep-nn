@@ -1,0 +1,7 @@
+.delivery-and-payment__heading {
+  margin: 0 0 20px;
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 38px;
+  }
+}

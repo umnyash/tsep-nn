@@ -1,0 +1,124 @@
+.raw-content {
+  --column-max-width: 625px;
+
+  display: grid;
+  grid-template-columns: 2fr minmax(280px, var(--column-max-width)) 1fr;
+  font: 400 16px/18px $main-font-family;
+  letter-spacing: -0.02em;
+
+  @media (min-width: $laptop-width) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  @media (min-width: $desktop-width) {
+    --column-max-width: 770px;
+
+    column-gap: 20px;
+  }
+
+  h2 {
+    margin: 20px 0 10px;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 400;
+
+    @media (min-width: $laptop-width) {
+      margin: 20px 0;
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  h3,
+  h4 {
+    margin: 20px 0 10px;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: 500;
+
+    @media (min-width: $laptop-width) {
+      margin: 20px 0;
+    }
+  }
+
+  p {
+    margin: 10px 0;
+
+    @media (min-width: $laptop-width) {
+      margin: 20px 0;
+    }
+  }
+
+  a {
+    font-weight: 500;
+    text-decoration-skip-ink: none;
+    color: var(--accent-color);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  b {
+    font-weight: 700;
+  }
+
+  i {
+    font-style: italic;
+  }
+
+  ul,
+  ol {
+    padding: 0 0 0 24px;
+    margin: 10px 0;
+
+    @media (min-width: $laptop-width) {
+      margin: 20px 0;
+    }
+
+    @media (min-width: $desktop-width) {
+      padding-left: 27px;
+    }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @media (min-width: $desktop-width) {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+  }
+
+  *:first-child {
+    margin-top: 0;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.raw-content--alter {
+  --column-max-width: 770px;
+}
+
+.raw-content > * {
+  grid-column: 1 / -1;
+}
+
+.raw-content__column.raw-content__column {
+  grid-column: 2 / 3;
+
+  @media (min-width: $laptop-width) {
+    grid-column: 2 / -1;
+    max-width: var(--column-max-width);
+  }
+}

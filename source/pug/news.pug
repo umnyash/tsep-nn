@@ -5,7 +5,4 @@ block variables
   - var pageClass = 'news-page'
 
 block content
-  .page-heading
-    .container
-      h1.visually-hidden Новости
-      img.page-heading__image(src='img/texts/news.svg' alt='Новости')
+  +news({headingLevel: 1, news: newsCards, withButton: true, firstCardWide: true})

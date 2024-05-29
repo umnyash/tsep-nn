@@ -1,0 +1,13 @@
+extends layout/layout
+
+block variables
+  - var title = 'Статья'
+  - var pageClass = 'article-page'
+
+block content
+  +breadcrumbs([
+    { text: 'Новости', href: 'news.html' },
+    { text: 'Цепи противоскольжения с шипами' },
+  ])
+  +article
+  +news({headingLevel: 2, news: newsCards.slice(0, 3)})

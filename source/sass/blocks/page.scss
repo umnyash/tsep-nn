@@ -7,12 +7,20 @@
 }
 
 .page__body {
+  display: grid;
+  min-height: 100vh;
   min-width: 320px;
   margin: 0;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr auto; // main footer
   font: 400 16px/16px $main-font-family;
   color: var(--text-color);
   background: var(--background-color);
   overflow-x: hidden;
+
+  @supports (height: 100dvh) {
+    height: 100dvh;
+  }
 
   &--no-scroll {
     overflow: hidden;
@@ -51,5 +59,25 @@
 
   @media (min-width: $desktop-width) {
     margin-bottom: 120px;
+  }
+}
+
+.page__content > .breadcrumbs {
+  margin: 0;
+}
+
+.page__content > .breadcrumbs + * {
+  margin-top: 17px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 43px;
+  }
+}
+
+.page__content > .breadcrumbs + .article {
+  margin-top: 12px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 34px;
   }
 }

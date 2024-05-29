@@ -12,6 +12,10 @@
   background: transparent;
   cursor: pointer;
 
+  &--down .button__inner::after {
+    transform: translateY(-2px) rotate(90deg);
+  }
+
   @media (min-width: $desktop-width) {
     font-size: 18px;
   }

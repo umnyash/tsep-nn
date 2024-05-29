@@ -1,0 +1,11 @@
+extends layout/layout
+
+block variables
+  - var title = 'Доставка и оплата'
+  - var pageClass = 'delivery-and-payment-page'
+
+block content
+  +breadcrumbs([
+    { text: 'Доставка и оплата' },
+  ])
+  +delivery-and-payment

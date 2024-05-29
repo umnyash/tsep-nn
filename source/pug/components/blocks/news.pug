@@ -1,0 +1,11 @@
+mixin news({headingLevel, news, withButton, firstCardWide})
+  .news&attributes(attributes)
+    .news__inner.container
+      if headingLevel === 1
+        h1.news__page-heading.page-heading
+          span.visually-hidden Новости
+          picture.page-heading__image-wrapper(aria-hidden='true')
+            img.page-heading__image(src='img/texts/news.svg' alt='')
+      else
+        h2.news__heading.heading Другие новости
+      +news-list({cardHeadingLevel: ++headingLevel, news, withButton, firstCardWide})
