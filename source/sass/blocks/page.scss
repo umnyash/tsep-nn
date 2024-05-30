@@ -34,12 +34,7 @@
 
 .page__banner {
   height: 700px;
-  min-height: 100vh;
   max-height: 100vh;
-
-  @supports (min-height: 100dvh) {
-    min-height: 100dvh;
-  }
 
   @supports (max-height: 100dvh) {
     max-height: 100dvh;
@@ -60,6 +55,10 @@
   @media (min-width: $desktop-width) {
     margin-bottom: 120px;
   }
+}
+
+.page__content > .contacts {
+  margin-bottom: 0;
 }
 
 .page__content > .breadcrumbs {

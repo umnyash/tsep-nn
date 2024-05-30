@@ -1,0 +1,7 @@
+mixin contacts
+  section.contacts#contacts&attributes(attributes)
+    .contacts__inner.container
+      h2.contacts__badge.badge ( Карта )
+      p.contacts__heading.heading.heading--text-indent_left Контакты
+      +contacts-list(class='contacts__list')
+    +map(class='contacts__map')
