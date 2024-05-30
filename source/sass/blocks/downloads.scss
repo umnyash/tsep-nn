@@ -1,0 +1,53 @@
+.downloads__inner {
+  @media (min-width: $laptop-width) {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+  }
+}
+
+.downloads__badge {
+  margin: 0;
+
+  @media (min-width: $laptop-width) {
+    position: absolute;
+    top: 5px;
+    left: var(--edge-indent);
+  }
+}
+
+.downloads__heading {
+  margin: 0;
+
+  @media (min-width: $laptop-width) {
+    grid-column: 1 / -1;
+    margin-left: var(--section-heading-left-indent);
+  }
+}
+
+.downloads__list {
+  margin: 0;
+
+  @media (min-width: $laptop-width) {
+    grid-column: 2 / -1;
+  }
+}
+
+// Отступы
+
+.downloads__badge + .downloads__heading {
+  margin-top: 11px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 0;
+  }
+}
+
+.downloads__heading + .downloads__list {
+  margin-top: 15px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 11px;
+  }
+}

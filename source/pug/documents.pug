@@ -1,0 +1,15 @@
+extends layout/layout
+
+block variables
+  - var title = 'Документы'
+  - var pageClass = 'documents-page'
+
+block content
+  +breadcrumbs([
+    { text: 'Клиентам', href: '#' },
+    { text: 'Документы' },
+  ])
+  +documents-page-header
+  +certificates
+  +downloads
+  +chapter(chapters['guarantees'])

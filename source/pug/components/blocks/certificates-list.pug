@@ -1,0 +1,9 @@
+mixin certificates-list
+  .certificates-list&attributes(attributes)
+    ul.certificates-list__items
+      each value in [1, 2, 3, 4]
+        li.certificates-list__item
+          a.certificates-list__item-link(href='#' rel='noopener')
+            img.certificates-list__item-image(src='img/documents/certificate-1.webp' width='243' height='345' alt='Сертификат.' loading='lazy')
+    .certificates-list__button-wrapper
+      +button({tag: 'button', text: 'Открыть еще', type: 'button'})(class='certificates-list__button button--down button--secondary')

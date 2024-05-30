@@ -1,0 +1,8 @@
+@mixin custom-cursor-medium {
+  cursor: url("../img/cursors/hexagon-with-arrow-medium.svg") 41 30, pointer;
+}
+
+
+@mixin custom-cursor-big {
+  cursor: url("../img/cursors/hexagon-with-arrow-big.svg") 49 36, pointer;
+}

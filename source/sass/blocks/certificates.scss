@@ -1,4 +1,4 @@
-.advantages {
+.certificates {
   font: 400 16px/1 $main-font-family;
 
   @media (min-width: $laptop-width) {
@@ -7,7 +7,7 @@
   }
 }
 
-.advantages__inner {
+.certificates__inner {
   @media (min-width: $laptop-width) {
     position: relative;
     display: grid;
@@ -16,7 +16,7 @@
   }
 }
 
-.advantages__badge {
+.certificates__badge {
   margin: 0;
 
   @media (min-width: $laptop-width) {
@@ -26,7 +26,7 @@
   }
 }
 
-.advantages__statistics {
+.certificates__list {
   @media (min-width: $laptop-width) {
     grid-column: 2 / -1;
   }
@@ -34,7 +34,7 @@
 
 // Остпупы
 
-.advantages__badge + .advantages__statistics {
+.certificates__badge + .certificates__list {
   margin-top: 16px;
 
   @media (min-width: $laptop-width) {

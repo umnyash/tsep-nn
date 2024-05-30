@@ -57,6 +57,14 @@
   }
 }
 
+.page__content > .page-header--documents {
+  margin-bottom: 37px;
+
+  @media (min-width: $laptop-width) {
+    margin-bottom: 40px;
+  }
+}
+
 .page__content > .contacts {
   margin-bottom: 0;
 }
