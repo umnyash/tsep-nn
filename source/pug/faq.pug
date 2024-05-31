@@ -1,0 +1,12 @@
+extends layout/layout
+
+block variables
+  - var title = 'Ответы на частые вопросы'
+  - var pageClass = 'faq-page'
+
+block content
+  +breadcrumbs([
+    { text: 'Клиентам', href: '#' },
+    { text: 'Ответы на частые вопросы' },
+  ])
+  +faq

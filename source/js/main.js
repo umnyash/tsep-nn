@@ -9,4 +9,6 @@ document.querySelectorAll('.selection--news').forEach(initNewsSelection);
 document.querySelectorAll('.contacts__map').forEach(initMap);
 
 document.querySelectorAll('.certificates-list').forEach(initCertificatesList);
+
+document.querySelectorAll('.folds').forEach(initFolds);
 /* * * * * * * * * * * * * * * * * * * * * * * */

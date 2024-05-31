@@ -1,0 +1,182 @@
+.folds {
+  padding: 0;
+  border-top: 1px solid var(--text-color-20);
+  list-style: none;
+  font: 400 14px/15px $main-font-family;
+  counter-reset: questions;
+
+  @media (min-width: $laptop-width) {
+    border: none;
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.folds__item {
+  border-bottom: 1px solid var(--text-color-20);
+  transition: padding $folds-timing-duration $folds-timing-function;
+  counter-increment: questions;
+}
+
+.folds__heading {
+  margin: 0;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  @media (min-width: $laptop-width) {
+    font-size: 24px;
+    line-height: 26px;
+    text-transform: none;
+  }
+}
+
+.folds__button {
+  display: grid;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  grid-template-columns: 34px 1fr 68px;
+  font: inherit;
+  font-kerning: none;
+  text-align: inherit;
+  text-transform: inherit;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  transition-property: padding, color;
+  transition-duration: $folds-timing-duration;
+  transition-timing-function: $folds-timing-function;
+
+  &:hover {
+    color: var(--accent-color);
+  }
+
+  @media (min-width: $laptop-width) {
+    padding: 31px 0 23px;
+    grid-template-columns: 210px 1fr 68px;
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding: 42px 0 35px;
+    grid-template-columns: 263px 1fr 110px;
+  }
+
+  &::before {
+    content: "/" counter(questions, decimal-leading-zero);
+    font-weight: 400;
+
+    @media (min-width: $laptop-width) {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  &::after {
+    content: "";
+    justify-self: end;
+    width: 15px;
+    height: 15px;
+    background: currentColor;
+    mask: url("../img/icons.svg#arrow_small");
+    transform: rotate(90deg);
+    transition: transform $folds-timing-duration $folds-timing-function;
+
+    @media (min-width: $laptop-width) {
+      width: 26px;
+      height: 25px;
+      mask-image: url("../img/icons.svg#arrow_big");
+    }
+  }
+}
+
+.folds__content {
+  visibility: hidden;
+  color: transparent;
+  line-height: 0;
+  overflow: hidden;
+  letter-spacing: -0.02em;
+  padding: 0 0 0 34px;
+
+  transition-property: line-height, color, visibility;
+  transition-duration: $folds-timing-duration;
+  transition-timing-function: $folds-timing-function;
+
+  @media (min-width: $laptop-width) {
+    padding: 0 16px 0 210px;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding: 0 110px 0 263px;
+  }
+
+  p {
+    margin: 0;
+    transition: margin $folds-timing-duration $folds-timing-function;
+  }
+}
+
+.folds__item--open {
+  padding-bottom: 17px;
+
+  @media (min-width: $laptop-width) {
+    padding-bottom: 19px;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding-bottom: 38px;
+  }
+
+  .folds__button {
+    padding-bottom: 7px;
+    font-weight: 500;
+    color: var(--accent-color);
+
+    @media (min-width: $laptop-width) {
+      padding-top: 21px;
+      padding-bottom: 5px;
+    }
+
+    @media (min-width: $desktop-width) {
+      padding-top: 41px;
+      padding-bottom: 16px;
+    }
+  }
+
+  .folds__button::after {
+    transform: none;
+  }
+
+  .folds__content {
+    visibility: visible;
+    line-height: 1.1;
+    color: inherit;
+
+    p + p {
+      margin-top: 10px;
+    }
+  }
+}
+
+.folds__item:hover {
+  will-change: padding;
+
+  .folds__button {
+    will-change: padding, color;
+  }
+
+  .folds__button::after {
+    will-change: transform;
+  }
+
+  .folds__content {
+    will-change: line-height, color;
+
+    p + p {
+      will-change: margin;
+    }
+  }
+}
