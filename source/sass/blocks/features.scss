@@ -1,0 +1,64 @@
+.features__inner {
+  @media (min-width: $laptop-width) {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+  }
+}
+
+.features__badge {
+  margin: 0;
+
+  @media (min-width: $laptop-width) {
+    position: absolute;
+    top: 5px;
+    left: var(--edge-indent);
+  }
+}
+
+.features__heading {
+  margin: 0;
+
+  @media (min-width: $laptop-width) {
+    grid-column: 1 / -1;
+    margin-left: var(--section-heading-left-indent);
+  }
+}
+
+.features__list {
+  @media (min-width: $laptop-width) {
+    display: none;
+  }
+}
+
+.features__list,
+.features__slider {
+  margin: 0;
+
+  @media (min-width: $laptop-width) {
+    grid-column: 1 / -1;
+  }
+}
+
+// Отступы
+
+.features__badge + .features__heading {
+  margin-top: 11px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 0;
+  }
+}
+
+.features__heading + .features__list {
+  margin-top: 14px;
+}
+
+.features__list + .features__slider {
+  margin-top: 20px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 30px;
+  }
+}

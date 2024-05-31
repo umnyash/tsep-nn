@@ -1,8 +1,25 @@
-@mixin custom-cursor-medium {
-  cursor: url("../img/cursors/hexagon-with-arrow-medium.svg") 41 30, pointer;
+/*
+ * small:  57 x 57
+ * medium: 71 x 71
+ * big:    85 x 85
+ */
+
+// Pointer
+
+@mixin pointer-cursor-medium {
+  cursor: url("../img/cursors/pointer/medium.svg") 41 30, pointer;
 }
 
+@mixin pointer-cursor-big {
+  cursor: url("../img/cursors/pointer/big.svg") 49 36, pointer;
+}
 
-@mixin custom-cursor-big {
-  cursor: url("../img/cursors/hexagon-with-arrow-big.svg") 49 36, pointer;
+// Swiper
+
+@mixin swipe-cursor-small {
+  cursor: url("../img/cursors/swipe/small.svg") 29 29, pointer;
+}
+
+@mixin swipe-cursor-big {
+  cursor: url("../img/cursors/swipe/big.svg") 43 43, pointer;
 }

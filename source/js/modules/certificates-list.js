@@ -1,7 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * certificates-list.js
  */
-
 function initCertificatesList(listElement) {
   const firstItemElement = listElement.querySelector('.certificates-list__item');
   const showMoreButtonElement = listElement.querySelector('.certificates-list__button');

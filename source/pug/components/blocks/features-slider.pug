@@ -1,0 +1,7 @@
+mixin features-slider(features)
+  .features-slider.swiper&attributes(attributes)
+    ul.features-slider__list.swiper-wrapper
+      each feature in features
+        li.features-slider__item.swiper-slide
+          +feature(feature)(class='features-slider__item-feature')
+          img.features-slider__item-image(src= feature.image srcset=`${feature.image2x} 2x` alt='' loading='lazy')

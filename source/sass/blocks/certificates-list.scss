@@ -31,10 +31,10 @@
     filter: grayscale(0) blur(2px);
   }
 
-  @include custom-cursor-medium;
+  @include pointer-cursor-medium;
 
   @media (min-width: $desktop-width) {
-    @include custom-cursor-big;
+    @include pointer-cursor-big;
   }
 }
 

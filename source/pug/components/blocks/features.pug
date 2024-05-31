@@ -1,0 +1,7 @@
+mixin features(features)
+  section.features&attributes(attributes)
+    .features__inner.container
+      h2.features__badge.badge ( Наши принципы )
+      p.features__heading.heading.heading--text-indent_left Почему ЦЕПИ-НН?
+      +features-list(features)(class='features__list')
+      +features-slider(features)(class='features__slider')

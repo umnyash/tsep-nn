@@ -1,0 +1,21 @@
+.features-list {
+  --item-min-height: 80px;
+
+  padding: 0;
+  list-style: none;
+}
+
+.features-list__item {
+  display: flex;
+  width: 100%;
+  min-height: var(--item-min-height);
+  align-items: stretch;
+}
+
+.features-list__item + .features-list__item {
+  margin-top: 10px;
+}
+
+.features-list__feature {
+  width: 100%;
+}
