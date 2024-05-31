@@ -16,6 +16,14 @@ const LAPTOP_WIDTH_MEDIA_QUERY = '(min-width: 1260px)';
 // });
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
+function debounce(callback, timeoutDelay = 500) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * burger.js
  */
@@ -28,6 +36,77 @@ function initBurger(burgerElement, cb) {
     cb();
   };
   burgerElement.addEventListener('click', onBurgerClick);
+}
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * certificates-list.js
+ */
+
+function initCertificatesList(listElement) {
+  const firstItemElement = listElement.querySelector('.certificates-list__item');
+  const showMoreButtonElement = listElement.querySelector('.certificates-list__button');
+  const setCertificatesListMode = () => {
+    listElement.classList.remove('certificates-list--short');
+    setTimeout(() => {
+      if (listElement.offsetHeight > firstItemElement.offsetHeight) {
+        listElement.classList.add('certificates-list--short');
+      }
+    }, 0);
+  };
+  setCertificatesListMode(listElement);
+  window.addEventListener('resize', debounce(setCertificatesListMode));
+  showMoreButtonElement.addEventListener('click', evt => {
+    evt.preventDefault();
+    listElement.classList.remove('certificates-list--short');
+  });
+}
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * map.js
+ */
+const initFolds = foldsElement => {
+  foldsElement.addEventListener('click', ({
+    target
+  }) => {
+    const buttonElement = target.closest('.folds__button');
+    if (!buttonElement) {
+      return;
+    }
+    const foldElement = buttonElement.closest('.folds__item');
+    foldElement.classList.toggle('folds__item--open');
+    buttonElement.ariaExpanded = buttonElement.ariaExpanded === 'true' ? 'false' : 'true';
+  });
+};
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * map.js
+ */
+async function initMap(mapElement) {
+  const COORDINATES = [43.895817, 56.227675];
+  const containerElement = mapElement.querySelector('.map__inner');
+  await ymaps3.ready;
+  const {
+    YMap,
+    YMapDefaultSchemeLayer,
+    YMapMarker,
+    YMapDefaultFeaturesLayer
+  } = ymaps3;
+  const map = new YMap(containerElement, {
+    location: {
+      center: COORDINATES,
+      zoom: 12
+    }
+  });
+  map.addChild(new YMapDefaultSchemeLayer());
+  map.addChild(new YMapDefaultFeaturesLayer());
+  const markerElement = document.querySelector('#map-marker-template').content.querySelector('.map-marker').cloneNode(true);
+  const marker = new YMapMarker({
+    coordinates: COORDINATES
+  }, markerElement);
+  map.addChild(marker);
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -100,4 +179,7 @@ function initSiteNavigation(siteNavigationElement) {
 const siteHeaderElement = document.querySelector('.site-header');
 initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation);
 document.querySelectorAll('.selection--news').forEach(initNewsSelection);
+document.querySelectorAll('.contacts__map').forEach(initMap);
+document.querySelectorAll('.certificates-list').forEach(initCertificatesList);
+document.querySelectorAll('.folds').forEach(initFolds);
 /* * * * * * * * * * * * * * * * * * * * * * * */
