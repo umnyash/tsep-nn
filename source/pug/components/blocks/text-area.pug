@@ -1,0 +1,5 @@
+mixin text-area({label, name, text, placeholder, required})
+  .text-area&attributes(attributes)
+    label.text-area__inner
+      span.visually-hidden= label
+      textarea.text-area__control(name= name, placeholder= placeholder, required= !!required)= text

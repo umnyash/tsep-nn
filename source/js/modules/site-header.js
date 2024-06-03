@@ -7,7 +7,7 @@ function initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation) {
 
   const myCb = () => {
     siteHeaderElement.classList.toggle('site-header--expanded');
-    document.body.classList.toggle('page__body--no-scroll');
+    togglePageScroll();
   }
 
   initBurger(burgerElement, myCb);

@@ -1,0 +1,72 @@
+.modal-form {
+  padding: 0;
+  border: none;
+}
+
+.modal-form__section {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+.modal-form__item {
+  width: 100%;
+}
+
+.modal-form__item + .modal-form__item {
+  margin-top: 10px;
+}
+
+.modal-form__footer {
+  display: flex;
+  padding: 0;
+  border: none;
+  margin: 8px 0 0;
+  flex-direction: column;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 7px;
+  }
+}
+
+.modal-form__comment {
+  margin: 0 40px 19px 0;
+  font-size: 14px;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  color: var(--text-color-50);
+
+  @media (min-width: $tablet-width) {
+    margin-right: 0;
+  }
+
+  @media (min-width: $laptop-width) {
+    margin-bottom: 39px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+.modal-form__comment-link {
+  text-decoration: underline solid transparent;
+  text-decoration-skip-ink: none;
+  color: var(--accent-color);
+  transition: text-decoration-color $medium-interaction-duration;
+
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+.modal-form__error-message-wrapper {
+  margin: 0;
+}
+
+.modal-form__error-message {
+  display: block;
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--error-color);
+}

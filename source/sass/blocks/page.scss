@@ -26,10 +26,6 @@
     height: 100dvh;
   }
 
-  &--no-scroll {
-    overflow: hidden;
-  }
-
   @media (min-width: $laptop-width) {
     font-size: 18px;
     line-height: 20px;

@@ -1,0 +1,20 @@
+extends layout/layout
+
+block variables
+  - var title = 'Оставить заявку'
+  - var pageClass = 'request-page'
+
+block content
+  +breadcrumbs([
+    { text: 'Грузовые прицепы', href: '#' },
+    { text: 'Оставить заявку' },
+  ])
+
+  +section
+    h1.section__page-heading.page-heading
+      span.visually-hidden Оставить заявку
+      picture.page-heading__image-wrapper(aria-hidden='true')
+        img.page-heading__image(src='img/texts/submit-application.svg' alt='')
+    p.section__text.section__text--small Компания "Цепи-НН" предлагает любые, удобные Вам условия сотрудничества. Работаем с банками и лизинговыми компаниями. Готовы вести сделку с Вашей лизинговой компанией или предложить лизинг через наших партнёров.
+    p.section__text.section__text--small Позвоните по телефону #[a.section__text-link(href='tel:+79116113423' rel='noopener') +7-911-611-34-23] или заполните форму обратной связи
+    +request-form(class='section__form')

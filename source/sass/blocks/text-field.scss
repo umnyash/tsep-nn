@@ -1,0 +1,49 @@
+.text-field {
+  position: relative;
+  display: inline-block;
+  font: 500 16px/16px $main-font-family;
+
+  &--disabled {
+    opacity: 0.4;
+  }
+}
+
+.text-field__inner {
+  display: block;
+}
+
+.text-field__control-wrapper {
+  display: block;
+  background: var(--background-alter-color);
+}
+
+.text-field__control {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 20px 19px;
+  border: none;
+  font: inherit;
+  text-transform: uppercase;
+  color: inherit;
+  background: transparent;
+  appearance: textfield;
+  outline: none;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+
+  &::placeholder {
+    opacity: 0.4;
+    color: inherit;
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--accent-color);
+  }
+}
+
+.text-field .prompt-text {
+  margin: 6px 0 0;
+}

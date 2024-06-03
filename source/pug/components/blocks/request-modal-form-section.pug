@@ -1,0 +1,9 @@
+mixin request-modal-form-section
+  .modal-form-section&attributes(attributes)
+    section.modal-form-section__main-screen
+      h2.modal-form-section__heading.heading Оставить заявку
+      p.modal-form-section__text Компания "Цепи-НН" предлагает любые, удобные Вам условия сотрудничества. Работаем с банками и лизинговыми компаниями.
+      +request-modal-form(class='modal-form-section__form')
+    section.modal-form-section__response-screen
+      h2.modal-form-section__heading.heading Заявка отправлена
+      p.modal-form-section__text Скоро с Вами свяжется наш менеджер для уточнения деталей заказа и доставки

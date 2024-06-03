@@ -1,0 +1,11 @@
+mixin request-form
+  form.form(action='https://fakestoreapi.com/products' method='post' target='_blank' data-name='request')&attributes(attributes)
+    fieldset.form__section
+      +text-field({label: 'Имя', name: 'name', type: 'text', placeholder: 'Ваше имя', required: true})(class='form__item form__item--name')
+      +text-field({label: 'Телефон', name: 'phone', type: 'tel', placeholder: 'Телефон', required: true})(class='form__item form__item--phone')
+      +text-field({label: 'Организация', name: 'organization', type: 'text', placeholder: 'Название организации', required: true})(class='form__item form__item--organization')
+      +text-area({label: 'Сообщение', name: 'message', placeholder: 'Что Вас интересует?', required: true})(class='form__item form__item--message')
+    fieldset.form__footer
+      small.form__comment Нажимая кнопку, Вы принимаете условия #[a.form__comment-link(href='#') Политики конфиденциальности]
+      +button({tag: 'button', text: 'Оставить заявку', type: 'submit'})(class='form__submit-button button--primary')
+      p.form__error-message-wrapper
