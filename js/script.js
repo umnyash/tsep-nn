@@ -522,15 +522,4 @@ document.querySelectorAll('form[data-name]').forEach(formElement => {
     showAlert
   });
 });
-document.querySelectorAll('.show-alert').forEach(button => {
-  button.addEventListener('click', evt => {
-    evt.preventDefault();
-    showAlert({
-      status: 'error',
-      heading: 'Заявка отправлена',
-      text: 'Скоро с Вами свяжется наш менеджер для уточнения деталей заказа и доставки'
-    });
-  });
-});
-
 /* * * * * * * * * * * * * * * * * * * * * * * */
