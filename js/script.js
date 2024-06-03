@@ -16,6 +16,11 @@ const LAPTOP_WIDTH_MEDIA_QUERY = '(min-width: 1260px)';
 // });
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
+function createElementByString(template) {
+  const newElement = document.createElement('div');
+  newElement.innerHTML = template;
+  return newElement.firstElementChild;
+}
 function debounce(callback, timeoutDelay = 500) {
   let timeoutId;
   return (...rest) => {
@@ -23,6 +28,66 @@ function debounce(callback, timeoutDelay = 500) {
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
 }
+function togglePageScroll() {
+  const bodyWidth = document.body.clientWidth;
+  document.body.classList.toggle('scroll-lock');
+  if (document.body.classList.contains('scroll-lock')) {
+    if (document.body.clientWidth === bodyWidth) {
+      return;
+    }
+    document.body.style.paddingRight = `${document.body.clientWidth - bodyWidth}px`;
+  } else {
+    document.body.style.paddingRight = '0';
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * alert.js
+ */
+function initAlertCreator(openModal) {
+  return alert => {
+    const modalString = `
+      <dialog class="modal modal--position_center modal--with_alert">
+        <div class="modal__inner">
+          <button class="modal__close-button" type="button">
+            <span class="visually-hidden">Закрыть</span>
+          </button>
+          <section class="alert modal__alert ${alert.status === 'error' ? 'alert--error' : ''}">
+            <h2 class="alert__heading heading">${alert.heading}</h2>
+            ${alert.text ? `<p class="alert__text">${alert.text}</p>` : ''}
+            <button class="alert__button button button--primary" type="button">${alert.buttonText || 'Закрыть'}</button>
+          </section>
+        </div>
+      </dialog>
+    `;
+    const modalElement = createElementByString(modalString);
+    document.body.append(modalElement);
+    openModal(modalElement);
+  };
+}
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * api.js
+ */
+async function sendData(url, body, onSuccess = () => {}, onFail = () => {}, onFinally = () => {}) {
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body
+    });
+    if (!response.ok) {
+      throw new Error(`${response.status} – ${response.statusText}`);
+    }
+    const data = await response.json();
+    onSuccess(data);
+  } catch (err) {
+    onFail();
+  } finally {
+    onFinally();
+  }
+}
+/* * * * * * * * * * * * * * * * * * * * * * * */
 
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * burger.js
@@ -42,7 +107,6 @@ function initBurger(burgerElement, cb) {
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * certificates-list.js
  */
-
 function initCertificatesList(listElement) {
   const firstItemElement = listElement.querySelector('.certificates-list__item');
   const showMoreButtonElement = listElement.querySelector('.certificates-list__button');
@@ -64,6 +128,42 @@ function initCertificatesList(listElement) {
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * features-list.js
+ */
+function initFeaturesList(listElement) {
+  const itemElements = Array.from(listElement.querySelectorAll('.features-list__item'));
+  const setItemElementMinHeightValue = () => {
+    listElement.style.setProperty('--item-min-height', 0);
+    setTimeout(() => {
+      const itemElementsHeightValues = itemElements.map(itemElement => itemElement.offsetHeight);
+      const highestHeightValue = `${Math.max(...itemElementsHeightValues)}px`;
+      listElement.style.setProperty('--item-min-height', highestHeightValue);
+    }, 0);
+  };
+  setItemElementMinHeightValue();
+  window.addEventListener('resize', debounce(setItemElementMinHeightValue));
+}
+;
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * features-slider.js
+ */
+function initFeaturesSlider(sliderElement) {
+  new Swiper(sliderElement, {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    breakpoints: {
+      1260: {
+        slidesPerView: 3
+      }
+    }
+  });
+}
+;
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * map.js
  */
 const initFolds = foldsElement => {
@@ -79,6 +179,91 @@ const initFolds = foldsElement => {
     buttonElement.ariaExpanded = buttonElement.ariaExpanded === 'true' ? 'false' : 'true';
   });
 };
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * form-alerts.js
+ */
+const formAlerts = {
+  request: {
+    success: {
+      heading: 'Заявка отправлена',
+      text: 'Скоро с Вами свяжется наш менеджер для уточнения деталей заказа и доставки'
+    },
+    error: {
+      status: 'error',
+      heading: 'Ошибка',
+      text: 'Ошибки – это доказательство того, что ты пытаешься.'
+    }
+  }
+};
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * form.js
+ */
+function initForm({
+  formElement,
+  sendData,
+  showAlert
+}) {
+  const SUBMIT_BUTTON_PENDING_STATE_CLASS = 'button--pending';
+  const formName = formElement.dataset.name;
+  const submitButtonElement = formElement.querySelector('.form__submit-button');
+  const errorMessageWrapperElement = formElement.querySelector('.form__error-message-wrapper');
+  const actionUrl = formElement.getAttribute('action');
+  const nameFieldElement = formElement.querySelector('.form__item--name .text-field__control');
+  const phoneFieldElement = formElement.querySelector('.form__item--phone .text-field__control');
+  const organizationFieldElement = formElement.querySelector('.form__item--organization .text-field__control');
+  const messageFieldElement = formElement.querySelector('.form__item--message .text-area__control');
+  if (nameFieldElement) {
+    nameFieldElement.dataset.pristinePattern = '/^[a-zа-яЁё -]+$/i';
+    nameFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+    nameFieldElement.dataset.pristinePatternMessage = 'Допустимы только буквы, дефисы и пробелы.';
+  }
+  if (phoneFieldElement) {
+    phoneFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+  }
+  if (organizationFieldElement) {
+    organizationFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+  }
+  if (messageFieldElement) {
+    messageFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+  }
+  const pristine = new Pristine(formElement, {
+    classTo: 'form__item',
+    errorClass: 'invalid',
+    errorTextParent: 'form__item',
+    errorTextTag: 'p',
+    errorTextClass: 'prompt-text'
+  });
+  formElement.addEventListener('submit', evt => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+    if (isValid) {
+      errorMessageWrapperElement.innerHTML = '';
+      submitButtonElement.disabled = true;
+      submitButtonElement.classList.add(SUBMIT_BUTTON_PENDING_STATE_CLASS);
+      sendData(actionUrl, new FormData(evt.target), data => {
+        showAlert(formAlerts[formName].success);
+        formElement.reset();
+      }, () => {
+        errorMessageWrapperElement.insertAdjacentHTML('beforeend', `<strong class='form__error-message shake'>Ошибка отправки данных. Проверьте подключение к интернету и попробуйте снова.</strong>`);
+        setTimeout(() => {
+          errorMessageWrapperElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }, 100);
+      }, () => {
+        submitButtonElement.disabled = false;
+        submitButtonElement.classList.remove(SUBMIT_BUTTON_PENDING_STATE_CLASS);
+      });
+    } else {
+      formElement.classList.remove('shake');
+      setTimeout(() => formElement.classList.add('shake'), 50);
+    }
+  });
+}
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
 /* * * * * * * * * * * * * * * * * * * * * * * *
@@ -107,6 +292,144 @@ async function initMap(mapElement) {
     coordinates: COORDINATES
   }, markerElement);
   map.addChild(marker);
+}
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * modal-form.js
+ */
+function initModalForm({
+  modalElement,
+  openModal,
+  sendData
+}) {
+  const SUBMIT_BUTTON_PENDING_STATE_CLASS = 'button--pending';
+  const modalName = modalElement.dataset.modal;
+  const innerElement = modalElement.querySelector('.modal__inner');
+  const sectionElement = innerElement.querySelector('.modal-form-section');
+  const formElement = sectionElement.querySelector('.modal-form');
+  const submitButtonElement = formElement.querySelector('.modal-form__submit-button');
+  const errorMessageWrapperElement = formElement.querySelector('.modal-form__error-message-wrapper');
+  const actionUrl = formElement.getAttribute('action');
+  const nameFieldElement = formElement.querySelector('.modal-form__item--name .text-field__control');
+  const phoneFieldElement = formElement.querySelector('.modal-form__item--phone .text-field__control');
+  const organizationFieldElement = formElement.querySelector('.modal-form__item--organization .text-field__control');
+  const messageFieldElement = formElement.querySelector('.modal-form__item--message .text-area__control');
+  if (nameFieldElement) {
+    nameFieldElement.dataset.pristinePattern = '/^[a-zа-яЁё -]+$/i';
+    nameFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+    nameFieldElement.dataset.pristinePatternMessage = 'Допустимы только буквы, дефисы и пробелы.';
+  }
+  if (phoneFieldElement) {
+    phoneFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+  }
+  if (organizationFieldElement) {
+    organizationFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+  }
+  if (messageFieldElement) {
+    messageFieldElement.dataset.pristineRequiredMessage = 'Заполните это поле.';
+  }
+  const pristine = new Pristine(formElement, {
+    classTo: 'modal-form__item',
+    errorClass: 'invalid',
+    errorTextParent: 'modal-form__item',
+    errorTextTag: 'p',
+    errorTextClass: 'prompt-text'
+  });
+  formElement.addEventListener('submit', evt => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+    if (isValid) {
+      errorMessageWrapperElement.innerHTML = '';
+      submitButtonElement.disabled = true;
+      submitButtonElement.classList.add(SUBMIT_BUTTON_PENDING_STATE_CLASS);
+      sendData(actionUrl, new FormData(evt.target), data => {
+        sectionElement.classList.add('modal-form-section--response');
+        formElement.reset();
+      }, () => {
+        errorMessageWrapperElement.insertAdjacentHTML('beforeend', `<strong class='modal-form__error-message shake'>Ошибка отправки данных. Проверьте подключение к интернету и попробуйте снова.</strong>`);
+        setTimeout(() => {
+          errorMessageWrapperElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }, 100);
+      }, () => {
+        submitButtonElement.disabled = false;
+        submitButtonElement.classList.remove(SUBMIT_BUTTON_PENDING_STATE_CLASS);
+      });
+    } else {
+      formElement.classList.remove('shake');
+      setTimeout(() => formElement.classList.add('shake'), 50);
+    }
+  });
+  document.querySelectorAll(`[data-modal-opener="${modalName}"]`).forEach(openerElement => {
+    openerElement.addEventListener('click', evt => {
+      evt.preventDefault();
+      errorMessageWrapperElement.innerHTML = '';
+      pristine.reset();
+      formElement.reset();
+      formElement.classList.remove('shake');
+      innerElement.addEventListener('transitionend', () => {
+        modalElement.querySelector('input').focus();
+      }, {
+        once: true
+      });
+      sectionElement.classList.remove('modal-form-section--response');
+      openModal(modalElement);
+    });
+  });
+}
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+ * modal.js
+ */
+const openedModals = [];
+function openModal(modalElement) {
+  togglePageScroll();
+  modalElement.showModal();
+  openedModals.push(modalElement);
+  document.addEventListener('click', onModalClick);
+  modalElement.addEventListener('close', onModalClose);
+}
+function closeModal(modalElement) {
+  modalElement.close();
+  setTimeout(() => {
+    modalElement.removeEventListener('close', onModalClose);
+  }, 0);
+}
+function onModalClose(evt) {
+  const closedModalElement = openedModals.pop();
+  if (closedModalElement.classList.contains('modal--with_alert')) {
+    closedModalElement.addEventListener('transitionend', evt => {
+      if (evt.propertyName === 'transform') {
+        closedModalElement.remove();
+      }
+    }, {
+      once: true
+    });
+  }
+  if (!openedModals.length) {
+    const modalInnerElement = evt.target.querySelector('.modal__inner');
+    modalInnerElement.addEventListener('transitionend', ({
+      target
+    }) => {
+      if (target.classList.contains('modal') || target.classList.contains('modal__inner')) {
+        togglePageScroll();
+      }
+    }, {
+      once: true
+    });
+    document.removeEventListener('click', onModalClick);
+  }
+}
+function onModalClick({
+  target
+}) {
+  if (!target.classList.contains('modal__close-button') && !target.classList.contains('alert__button')) {
+    return;
+  }
+  closeModal(openedModals.at(-1));
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -144,7 +467,7 @@ function initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation) {
   const siteNavigationElement = siteHeaderElement.querySelector('.site-header__site-navigation');
   const myCb = () => {
     siteHeaderElement.classList.toggle('site-header--expanded');
-    document.body.classList.toggle('page__body--no-scroll');
+    togglePageScroll();
   };
   initBurger(burgerElement, myCb);
   initSiteNavigation(siteNavigationElement);
@@ -178,8 +501,36 @@ function initSiteNavigation(siteNavigationElement) {
  */
 const siteHeaderElement = document.querySelector('.site-header');
 initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation);
+const showAlert = initAlertCreator(openModal);
 document.querySelectorAll('.selection--news').forEach(initNewsSelection);
 document.querySelectorAll('.contacts__map').forEach(initMap);
 document.querySelectorAll('.certificates-list').forEach(initCertificatesList);
 document.querySelectorAll('.folds').forEach(initFolds);
+document.querySelectorAll('.features-list').forEach(initFeaturesList);
+document.querySelectorAll('.features-slider').forEach(initFeaturesSlider);
+document.querySelectorAll('[data-modal="request"]').forEach(modalElement => {
+  initModalForm({
+    modalElement,
+    openModal,
+    sendData
+  });
+});
+document.querySelectorAll('form[data-name]').forEach(formElement => {
+  initForm({
+    formElement,
+    sendData,
+    showAlert
+  });
+});
+document.querySelectorAll('.show-alert').forEach(button => {
+  button.addEventListener('click', evt => {
+    evt.preventDefault();
+    showAlert({
+      status: 'error',
+      heading: 'Заявка отправлена',
+      text: 'Скоро с Вами свяжется наш менеджер для уточнения деталей заказа и доставки'
+    });
+  });
+});
+
 /* * * * * * * * * * * * * * * * * * * * * * * */
