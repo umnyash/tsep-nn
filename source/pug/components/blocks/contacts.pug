@@ -1,7 +1,7 @@
 mixin contacts
-  section.contacts#contacts&attributes(attributes)
-    .contacts__inner.container
-      h2.contacts__badge.badge ( Карта )
-      p.contacts__heading.heading.heading--text-indent_left Контакты
-      +contacts-list(class='contacts__list')
-    +map(class='contacts__map')
+  section.section.section--contacts#contacts&attributes(attributes)
+    .section__inner.container
+      p.section__badge.badge ( Карта )
+      h2.section__heading.section__heading--column-span_5.heading Контакты
+      +contacts-list(class='section__contacts-list')
+    +map(class='section__contacts-map')

@@ -1,9 +1,0 @@
-mixin faq
-  .faq&attributes(attributes)
-    .faq__inner.container
-      h1.faq__page-heading.page-heading
-        span.visually-hidden Ответы на частые вопросы
-        picture.page-heading__image-wrapper(aria-hidden='true')
-          source(media='(min-width: 660px)' srcset='img/texts/answers-to-frequently-asked-questions.svg')
-          img.page-heading__image(src='img/texts/answers-to-frequently-asked-questions-short.svg' alt='')
-      +folds(faq)(class='faq__folds')

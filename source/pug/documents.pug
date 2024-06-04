@@ -10,6 +10,19 @@ block content
     { text: 'Документы' },
   ])
   +documents-page-header
-  +certificates
-  +downloads
-  +chapter(chapters['guarantees'])
+
+  +section
+    h2.section__badge.badge  ( Сертификаты )
+    +certificates-list(class='section__certificates-list')
+
+  +section
+    h2.section__badge.badge  ( Инфо )
+    p.section__heading.section__heading--column-span_5.heading Скачать
+    +downloads-list(class='section__downloads-list')
+
+  +section
+    h2.section__badge.badge ( Гарантии )
+    p.section__heading.section__heading--column-span_5.heading Возврат
+    p.section__text Появились новые модели цепей противоскольжения тип "лесенка", "зигзаг", "ромб" из цепей калибра 10 мм. Комплекты выполнены из цепей нормальной прочности и комплекты, где рабочая часть из каленой высокопрочной цепи (сталь 25Г2А, твердость после закалки 38-45 HRC)
+    p.section__text Появились новые модели цепей противоскольжения тип "лесенка", "зигзаг", "ромб" из цепей калибра 10 мм. Комплекты выполнены из цепей нормальной прочности и комплекты, где рабочая часть из каленой высокопрочной цепи (сталь 25Г2А, твердость после закалки 38-45 HRC)
+    p.section__text Появились новые модели цепей противоскольжения тип "лесенка", "зигзаг", "ромб" из цепей калибра 10 мм. Комплекты выполнены из цепей нормальной прочности и комплекты, где рабочая часть из каленой высокопрочной цепи (сталь 25Г2А, твердость после закалки 38-45 HRC)

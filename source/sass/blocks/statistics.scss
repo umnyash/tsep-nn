@@ -1,7 +1,8 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 10px;
+  row-gap: 10px;
+  column-gap: var(--section-column-gap);
   font: 400 16px/18px $main-font-family;
 
   @media (min-width: $laptop-width) {
@@ -9,10 +10,6 @@
     row-gap: 20px;
     font-size: 18px;
     line-height: 20px;
-  }
-
-  @media (min-width: $desktop-width) {
-    column-gap: 20px;
   }
 }
 

@@ -6,7 +6,23 @@ block variables
 
 block content
   +vacancies-page-header
-  +chapter(chapters['vacancies-who-we-are'])
-  +advantages
-  +chapter(chapters['vacancies-about-company'])
-  +vacancies-selection
+
+  +section
+    h2.section__badge.badge ( Кто мы? )
+    p.section__heading.section__heading--column-span_5.heading.heading--small.heading--justify Учитывая ключевые сценарии поведения, новая модель организационной деятельности является качественно новой ступенью укрепления моральных ценностей.
+    p.section__text А также некоторые особенности внутренней политики преданы социально-демократической анафеме. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: дальнейшее развитие различных форм деятельности не оставляет шанса для благоприятных перспектив.
+
+  +section
+    h2.section__badge.badge ( Наши преимущества )
+    +statistics(class='section__statistics')
+
+  +section
+    h2.section__badge.badge ( О компании )
+    p.section__heading.section__heading--column-span_5.heading Чем мы занимаемся?
+    p.section__text А также некоторые особенности внутренней политики преданы социально-демократической анафеме. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: дальнейшее развитие различных форм деятельности не оставляет шанса для благоприятных перспектив.
+    p.section__text А также некоторые особенности внутренней политики преданы социально-демократической анафеме.
+
+  +section
+    h2.section__badge.badge ( Мы ищем специалистов )
+    p.section__heading.section__heading--column-span_5.heading Вакансии
+    +vacancies-selection-list(class='section__selection-list')

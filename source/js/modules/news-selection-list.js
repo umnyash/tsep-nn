@@ -1,10 +1,10 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * news-selection.js
  */
-function initNewsSelection(newsSelectionElement) {
+function initNewsSelectionList(newsSelectionElement) {
   const cursorElement = document.querySelector('.cursor-picture');
   const cursorImageElement = cursorElement.querySelector('.cursor-picture__image');
-  const linkElements = newsSelectionElement.querySelectorAll('.selection__item-link');
+  const linkElements = newsSelectionElement.querySelectorAll('.selection-list__item-link');
 
   linkElements.forEach((linkElement) => {
     linkElement.addEventListener('mouseover', ({ target }) => {

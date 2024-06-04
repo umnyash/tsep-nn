@@ -8,7 +8,11 @@ function initFeaturesSlider(sliderElement) {
     breakpoints: {
       1260: {
         slidesPerView: 3,
-      }
+      },
+      1580: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
     }
   });
 };

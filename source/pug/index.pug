@@ -6,7 +6,22 @@ block variables
 
 block content
   +main-banner(class='page__banner')
-  +company-preview
-  +news-selection
+
+  +section
+    h2.section__badge.badge ( О компании )
+    p.section__heading.section__heading--column-span_4.heading Надежная продукция точно&nbsp;в&nbsp;срок
+    p.section__text Наши производственные мощности и&nbsp;опыт работы персонала позволяют выпускать продукцию высокого качества в&nbsp;кратчайший срок. Большое значение для&nbsp;нас имеет качество выпускаемой продукции.
+    +statistics(class='section__statistics')
+    +button({tag: 'a', text: 'Подробнее', href: 'company.html'})(class='section__details-button button--secondary-mobile')
+
+  +section
+    h2.section__badge.badge ( Что нового )
+    p.section__heading.section__heading--column-span_5.heading Последние новости
+    +news-selection-list(class='section__selection-list')
+
+  +section
+    h2.section__badge.badge ( Наши принципы )
+    p.section__heading.section__heading--column-span_5.heading Почему ЦЕПИ-НН?
+    +features(features)(class='section__features')
+
   +cursor-picture
-  +features(features)

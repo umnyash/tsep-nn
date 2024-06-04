@@ -9,7 +9,7 @@
     display: grid;
     min-height: 36px;
     grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
+    column-gap: var(--section-column-gap);
     align-items: center;
   }
 }

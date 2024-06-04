@@ -2,23 +2,10 @@
   font: 400 30px/32px $main-font-family;
   text-transform: uppercase;
   overflow-wrap: anywhere;
-  hyphens: auto;
 
   @media (min-width: $laptop-width) {
     font-size: 48px;
     line-height: 52px;
-  }
-}
-
-.heading--text-indent_left {
-  @media (min-width: $laptop-width) {
-    text-indent: calc((100% - var(--section-column-gap) * (var(--section-column-count) - 1) + var(--section-heading-left-indent)) / var(--section-column-count) + var(--section-column-gap) - var(--section-heading-left-indent));
-  }
-}
-
-.heading--text-indent_both {
-  @media (min-width: $laptop-width) {
-    text-indent: calc((100% - var(--section-column-gap) * (var(--section-column-count) - 1) + var(--section-heading-left-indent) * 2) / var(--section-column-count) + var(--section-column-gap) - var(--section-heading-left-indent));
   }
 }
 

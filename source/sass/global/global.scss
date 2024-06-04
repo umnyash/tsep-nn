@@ -13,21 +13,15 @@
   --error-color: #ff380d;
 
   --edge-indent: 10px;
-
+  --section-column-gap: 10px;
   --site-header-height: 60px;
 
   @media (min-width: $laptop-width) {
     --site-header-height: 67px;
-
-    --section-column-count: 3;
-    --section-column-gap: 10px;
-    --section-heading-left-indent: 212px;
   }
 
   @media (min-width: $desktop-width) {
     --edge-indent: 20px;
-
     --section-column-gap: 20px;
-    --section-heading-left-indent: 263px;
   }
 }

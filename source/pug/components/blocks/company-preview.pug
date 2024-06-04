@@ -1,8 +1,0 @@
-mixin company-preview
-  section.company-preview&attributes(attributes)
-    .company-preview__inner.container
-      h2.company-preview__badge.badge ( О компании )
-      p.company-preview__heading.heading.heading--text-indent_both Надежная продукция точно&nbsp;в&nbsp;срок
-      p.company-preview__text Наши производственные мощности и&nbsp;опыт работы персонала позволяют выпускать продукцию высокого качества в&nbsp;кратчайший срок. Большое значение для&nbsp;нас имеет качество выпускаемой продукции.
-      +statistics(class='company-preview__statistics')
-      +button({tag: 'a', text: 'Подробнее', href: 'company.html'})(class='company-preview__button button--secondary-mobile')
