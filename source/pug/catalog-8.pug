@@ -1,0 +1,9 @@
+extends layout/layout
+
+block variables
+  - var title = 'Каталог (8 категорий)'
+  - var pageClass = 'catalog-page'
+  - var siteHeaderDarkTheme = true
+
+block content
+  +categories({links: categoriesNavigationLinks})

@@ -16,6 +16,8 @@
   --section-column-gap: 10px;
   --site-header-height: 60px;
 
+  --zero-percent: 0%;
+
   @media (min-width: $laptop-width) {
     --site-header-height: 67px;
   }

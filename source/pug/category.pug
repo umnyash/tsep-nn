@@ -1,0 +1,9 @@
+extends layout/layout
+
+block variables
+  - var title = 'Категория'
+  - var pageClass = 'category-page'
+  - var siteHeaderDarkTheme = true
+
+block content
+  +categories({links: categoriesNavigationLinks.slice(0, 4), currentLinkNumber: 1})

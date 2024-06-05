@@ -1,0 +1,6 @@
+mixin categories({links, currentLinkNumber})
+  .categories&attributes(attributes)
+    .categories__inner.container
+      h1.categories__heading.heading.heading--huge Цепи#[br] противоскольжения
+      p.categories__text Предназначены для предотвращения проскальзывания колес и повышения проходимости авто техники при движении по трудно проходимым участкам дороги – гололед, укатанный снег, снежная целина, грунт после дождя, бездорожье и т.д.
+      +navigation({links, currentLinkNumber})(class='categories__navigation')

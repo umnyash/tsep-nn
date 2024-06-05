@@ -24,6 +24,19 @@
   }
 }
 
+.heading--huge {
+  font-size: 42px;
+  line-height: 1;
+
+  @media (min-width: $laptop-width) {
+    font-size: 82px;
+  }
+
+  @media (min-width: $desktop-width) {
+    font-size: 96px;
+  }
+}
+
 .heading--justify {
   @media (min-width: $laptop-width) {
     text-align: justify;
