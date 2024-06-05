@@ -156,6 +156,10 @@ function initFeaturesSlider(sliderElement) {
     breakpoints: {
       1260: {
         slidesPerView: 3
+      },
+      1580: {
+        slidesPerView: 3,
+        spaceBetween: 20
       }
     }
   });
@@ -436,10 +440,10 @@ function onModalClick({
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * news-selection.js
  */
-function initNewsSelection(newsSelectionElement) {
+function initNewsSelectionList(newsSelectionElement) {
   const cursorElement = document.querySelector('.cursor-picture');
   const cursorImageElement = cursorElement.querySelector('.cursor-picture__image');
-  const linkElements = newsSelectionElement.querySelectorAll('.selection__item-link');
+  const linkElements = newsSelectionElement.querySelectorAll('.selection-list__item-link');
   linkElements.forEach(linkElement => {
     linkElement.addEventListener('mouseover', ({
       target
@@ -502,8 +506,8 @@ function initSiteNavigation(siteNavigationElement) {
 const siteHeaderElement = document.querySelector('.site-header');
 initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation);
 const showAlert = initAlertCreator(openModal);
-document.querySelectorAll('.selection--news').forEach(initNewsSelection);
-document.querySelectorAll('.contacts__map').forEach(initMap);
+document.querySelectorAll('.selection-list--news').forEach(initNewsSelectionList);
+document.querySelectorAll('.section__contacts-map').forEach(initMap);
 document.querySelectorAll('.certificates-list').forEach(initCertificatesList);
 document.querySelectorAll('.folds').forEach(initFolds);
 document.querySelectorAll('.features-list').forEach(initFeaturesList);
