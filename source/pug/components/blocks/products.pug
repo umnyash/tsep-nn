@@ -1,0 +1,6 @@
+mixin products({heading, products, listGrid})
+  section.products&attributes(attributes)
+    .products__inner.container
+      h2.products__heading.heading!= heading
+      .products__list
+          +products-list(products)(class= listGrid && `products-list--grid_${listGrid}`)

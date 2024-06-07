@@ -7,3 +7,6 @@ block variables
 
 block content
   +categories({links: categoriesNavigationLinks.slice(0, 4)})
+  +products({heading: 'Легковые автомобили', products, listGrid: 1})
+  +products({heading: 'Грузовые автомобили', products: products.concat(products, products), listGrid: 2})
+  +products({heading: 'Тракторы и спец. техника', products: products.concat(products, products), listGrid: 3})

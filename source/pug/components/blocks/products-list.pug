@@ -1,0 +1,8 @@
+mixin products-list(products)
+  .products-list&attributes(attributes)
+    ul.products-list__items
+      each product in products.slice(0, 5)
+        li.products-list__item
+          +product-card(product)
+    if products.length > 5
+      +button({tag: 'a', text: 'Смотреть ещё', href: '#'})(class='products-list__show-more-button button--secondary')

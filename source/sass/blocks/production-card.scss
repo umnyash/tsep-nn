@@ -14,13 +14,11 @@
   margin: 0 0 4px;
   flex-direction: column-reverse;
   row-gap: 13px;
-  overflow: hidden;
 }
 
-.production-card__image-wrapper {
+.production-card__image-container {
   height: 495px;
-  background: var(--image-wrapper-background-color);
-  transition: filter $little-interaction-duration;
+  overflow: hidden;
 
   @media (min-width: $laptop-width) {
     height: 595px;
@@ -29,6 +27,14 @@
   @media (min-width: $desktop-width) {
     height: 733px;
   }
+}
+
+.production-card__image-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--image-wrapper-background-color);
+  transition: filter $medium-interaction-duration;
 }
 
 .production-card__heading {

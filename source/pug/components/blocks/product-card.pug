@@ -1,0 +1,9 @@
+mixin product-card(product)
+  article.product-card&attributes(attributes)
+    h3.product-card__heading
+      a.product-card__link(href='product.html')!= product.title
+    p.product-card__text!= product.description
+    .product-card__image-container
+      picture.product-card__image-wrapper
+        source(media='(min-width: 1260px)' srcset=`${product.desktopImage} 1x, ${product.desktopImage2x} 2x`)
+        img.product-card__image(src= product.image srcset=`${product.image2x} 2x` alt='')

@@ -1,0 +1,27 @@
+.products__inner {
+  @media (min-width: $laptop-width) {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: var(--edge-indent);
+  }
+}
+
+.products__heading {
+  margin: 0 0 4px;
+
+  @media (min-width: $laptop-width) {
+    grid-column: 2 / span 5;
+    margin-bottom: 30px;
+    text-indent: calc((100% - 4 * var(--section-column-gap)) / 5 + var(--section-column-gap));
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 10px;
+  }
+}
+
+.products__list {
+  @media (min-width: $laptop-width) {
+    grid-column: 1 / -1;
+  }
+}
