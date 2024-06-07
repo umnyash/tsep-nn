@@ -40,6 +40,14 @@ function togglePageScroll() {
     document.body.style.paddingRight = '0';
   }
 }
+function lockPageScroll() {
+  const bodyWidth = document.body.clientWidth;
+  document.body.classList.add('scroll-lock');
+  if (document.body.clientWidth === bodyWidth) {
+    return;
+  }
+  document.body.style.paddingRight = `${document.body.clientWidth - bodyWidth}px`;
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * alert.js
@@ -464,6 +472,25 @@ function initNewsSelectionList(newsSelectionElement) {
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
 /* * * * * * * * * * * * * * * * * * * * * * * *
+ * products-slider.js
+ */
+function initProductionSlider(sliderElement) {
+  const swiper = new Swiper(sliderElement, {
+    direction: 'vertical',
+    slidesPerView: 1,
+    mousewheel: {
+      enable: true,
+      releaseOnEdges: true
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  });
+}
+/* * * * * * * * * * * * * * * * * * * * * * * */
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
  * site-header.js
  */
 function initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation) {
@@ -526,4 +553,5 @@ document.querySelectorAll('form[data-name]').forEach(formElement => {
     showAlert
   });
 });
+document.querySelectorAll('.production-slider').forEach(initProductionSlider);
 /* * * * * * * * * * * * * * * * * * * * * * * */
