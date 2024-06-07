@@ -1,0 +1,6 @@
+mixin production-list(production)
+  .production-list&attributes(attributes)
+    ul.production-list__items
+      each type in production
+        li.production-list__item
+          +production-card(type)

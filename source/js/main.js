@@ -25,4 +25,6 @@ document.querySelectorAll('[data-modal="request"]').forEach((modalElement) => {
 document.querySelectorAll('form[data-name]').forEach((formElement) => {
   initForm({ formElement, sendData, showAlert });
 });
+
+document.querySelectorAll('.production-slider').forEach(initProductionSlider);
 /* * * * * * * * * * * * * * * * * * * * * * * */

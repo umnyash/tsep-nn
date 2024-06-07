@@ -28,3 +28,14 @@ function togglePageScroll() {
     document.body.style.paddingRight = '0';
   }
 }
+
+function lockPageScroll() {
+  const bodyWidth = document.body.clientWidth;
+  document.body.classList.add('scroll-lock');
+
+  if (document.body.clientWidth === bodyWidth) {
+    return;
+  }
+
+  document.body.style.paddingRight = `${document.body.clientWidth - bodyWidth}px`;
+}

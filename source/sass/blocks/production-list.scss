@@ -1,0 +1,28 @@
+.production-list__items {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  gap: 20px 10px;
+  counter-reset: types;
+
+  @media (min-width: $tablet-width) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: $laptop-width) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: $desktop-width) {
+    gap: 40px 20px;
+  }
+}
+
+.production-list__item {
+  counter-increment: types;
+
+  .production-card__heading::before {
+    content: "/" counter(types) "\0020";
+  }
+}

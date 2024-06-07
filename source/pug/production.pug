@@ -2,8 +2,10 @@ extends layout/layout
 
 block variables
   - var title = 'Продукция'
-  - var pageClass = 'products-page'
+  - var pageClass = 'production-page'
   - var siteHeaderDarkTheme = true
 
 block content
   +products-banner(class='page__banner')
+  .container
+    +production-list(production)

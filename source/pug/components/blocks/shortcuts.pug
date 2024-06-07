@@ -1,0 +1,17 @@
+mixin shortcuts(links)
+  .shortcuts&attributes(attributes)
+    -
+      var groupedLinks = links.reduce((acc, item, index) => {
+        if (index % 2) {
+          acc.at(-1).push(item);
+        } else {
+          acc.push([item]);
+        }
+        return acc;
+      }, []);
+
+    each group in groupedLinks
+      .shortcuts__row
+        each link in group
+          a.shortcuts__link(href='category.html')= link.text
+            img.shortcuts__icon(class= link.isChainIcon && 'shortcuts__icon--chain' src= link.icon alt='')

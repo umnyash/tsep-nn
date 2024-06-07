@@ -1,0 +1,66 @@
+.shortcuts {
+  font: 400 14px/15px $main-font-family;
+
+  @media (min-width: $laptop-width) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+.shortcuts__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  & + .shortcuts__row {
+    margin-top: 10px;
+  }
+
+  @media (min-width: $tablet-width) {
+    display: flex;
+  }
+}
+
+.shortcuts__link {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px 9px 8px;
+  min-height: 48px;
+  border: 1px solid var(--border-color);
+  align-items: center;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  color: inherit;
+  transition-property: border-color, background-color;
+  transition-duration: $medium-interaction-duration;
+  transition-timing-function: ease;
+
+  &:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+  }
+
+  @media (min-width: $laptop-width) {
+    padding-right: 12px;
+  }
+}
+
+.shortcuts__icon {
+  order: -1;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin: 0 10px 0 0;
+
+  &--chain {
+    width: 26px;
+    height: 26px;
+    margin-left: 2px;
+    margin-right: 13px;
+
+    @media (min-width: $laptop-width) {
+      width: 35px;
+    }
+  }
+}

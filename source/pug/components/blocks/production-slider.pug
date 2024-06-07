@@ -1,0 +1,21 @@
+mixin production-slider__item(type)
+  li.production-slider__item.swiper-slide&attributes(attributes)
+    p.production-slider__item-badge.badge ( Категории )
+    h3.production-slider__item-heading.heading!= type.title
+    .production-slider__item-texts
+      p.production-slider__item-text!= type.description
+    if type.categories
+      .production-slider__item-shortcuts
+        +shortcuts(type.categories)
+    .production-slider__item-image-container
+      picture.production-slider__item-image-wrapper
+        source(media='(min-width: 1281px)' srcset=`${type.slideImage}-desktop.webp 1x, ${type.slideImage}-desktop.webp 2x`)
+        source(media='(min-width: 421px)' srcset=`${type.slideImage}-laptop.webp 1x, ${type.slideImage}-laptop.webp 2x`)
+        img.production-slider__item-image(src=`${type.slideImage}.webp` srcset=`${type.slideImage}@2x.webp` alt='')
+    +button({tag: 'a', text: 'Подробнее', href: 'catalog.html'})(class='production-slider__items-details-button button--secondary-mobile')
+
+mixin production-slider(products)
+  .production-slider.swiper&attributes(attributes)
+    ul.production-slider__list.swiper-wrapper
+      each type in products
+        +production-slider__item(type)

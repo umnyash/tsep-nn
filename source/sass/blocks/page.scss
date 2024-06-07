@@ -57,6 +57,21 @@
   }
 }
 
+.page__content > .section--dark {
+  margin-bottom: 0;
+}
+
+.page__production-slider {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+
+  @supports (max-height: 100dvh) {
+    min-height: 100dvh;
+    max-height: 100dvh;
+  }
+}
+
 .page__content > .page-header--documents {
   margin-bottom: 37px;
 
