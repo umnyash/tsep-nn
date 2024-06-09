@@ -3,11 +3,11 @@
 }
 
 .page__site-header {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .page__body {
@@ -22,8 +22,8 @@
   background: var(--background-color);
   overflow-x: hidden;
 
-  @supports (height: 100dvh) {
-    height: 100dvh;
+  @supports (min-height: 100dvh) {
+    min-height: 100dvh;
   }
 
   @media (min-width: $laptop-width) {
@@ -45,7 +45,19 @@
   }
 }
 
-.page__content > * {
+.page__content > * + * {
+  margin-top: 70px;
+
+  @media (min-width: $laptop-width) {
+    margin-top: 100px;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-top: 120px;
+  }
+}
+
+.page__content > :last-child {
   margin-bottom: 70px;
 
   @media (min-width: $laptop-width) {
@@ -57,14 +69,11 @@
   }
 }
 
-.page__content > .section--dark {
-  margin-bottom: 0;
-}
-
 .page__production-slider {
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
+  margin-top: 0;
 
   @supports (max-height: 100dvh) {
     min-height: 100dvh;
@@ -72,23 +81,48 @@
   }
 }
 
-.page__content > .page-header--documents {
-  margin-bottom: 37px;
+.page-header--documents + * {
+  margin-top: 37px;
 
   @media (min-width: $laptop-width) {
-    margin-bottom: 40px;
+    margin-top: 40px;
   }
 }
 
-.page__content > .section--contacts {
+.section--contacts + * {
+  margin-top: 0;
+}
+
+.section--contacts.section--contacts {
   margin-bottom: 0;
 }
 
-.page__content > .breadcrumbs {
-  margin: 0;
+.page__content > :first-child {
+  margin-top: calc(var(--site-header-height) + 20px);
+
+  @media (min-width: $laptop-width) {
+    margin-top: calc(var(--site-header-height) + 40px);
+  }
 }
 
-.page__content > .breadcrumbs + * {
+.page__content > .page__breadcrumbs:first-child {
+  margin-top: calc(var(--site-header-height) + 20px);
+
+  @media (min-width: $laptop-width) {
+    margin-top: calc(var(--site-header-height) + 32px);
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-top: calc(var(--site-header-height) + 40px);
+  }
+}
+
+.page__content > .page__banner:first-child,
+.page__content > .categories:first-child {
+  margin-top: 0;
+}
+
+.page__breadcrumbs + * {
   margin-top: 17px;
 
   @media (min-width: $laptop-width) {
@@ -96,7 +130,7 @@
   }
 }
 
-.page__content > .breadcrumbs + .article {
+.page__breadcrumbs + .article {
   margin-top: 12px;
 
   @media (min-width: $laptop-width) {

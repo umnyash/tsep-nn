@@ -5,10 +5,11 @@ block variables
   - var pageClass = 'request-page'
 
 block content
-  +breadcrumbs([
-    { text: 'Грузовые прицепы', href: '#' },
-    { text: 'Оставить заявку' },
-  ])
+  .page__breadcrumbs.container
+    +breadcrumbs([
+      { text: 'Грузовые прицепы', href: '#' },
+      { text: 'Оставить заявку' },
+    ])
 
   +section
     h1.section__page-heading.page-heading

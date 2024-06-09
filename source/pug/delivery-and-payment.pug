@@ -5,8 +5,9 @@ block variables
   - var pageClass = 'delivery-and-payment-page'
 
 block content
-  +breadcrumbs([
-    { text: 'Клиентам', href: '#' },
-    { text: 'Доставка и оплата' },
-  ])
+  .page__breadcrumbs.container
+    +breadcrumbs([
+      { text: 'Клиентам', href: '#' },
+      { text: 'Доставка и оплата' },
+    ])
   +delivery-and-payment

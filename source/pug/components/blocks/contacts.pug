@@ -1,6 +1,7 @@
 mixin contacts
-  section.section.section--contacts#contacts&attributes(attributes)
+  section.section.section--contacts&attributes(attributes)
     .section__inner.container
+      span.section__anchor#contacts
       p.section__badge.badge ( Карта )
       h2.section__heading.section__heading--column-span_5.heading Контакты
       +contacts-list(class='section__contacts-list')

@@ -1,4 +1,6 @@
 .section {
+  position: relative;
+  z-index: 0;
   font: 400 16px/16px $main-font-family;
 
   @media (min-width: $laptop-width) {
@@ -22,6 +24,14 @@
     padding-top: 112px;
     padding-bottom: 76px;
   }
+}
+
+.section__anchor {
+  position: absolute;
+  bottom: calc(100% + var(--site-header-height));
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .section__inner {

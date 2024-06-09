@@ -1,0 +1,13 @@
+.hidden {
+  &--m-t-l {
+    @media (max-width: ($desktop-width - 1)) {
+      display: none;
+    }
+  }
+
+  &--d {
+    @media (min-width: $desktop-width) {
+      display: none;
+    }
+  }
+}

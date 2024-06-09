@@ -5,10 +5,11 @@ block variables
   - var pageClass = 'faq-page'
 
 block content
-  +breadcrumbs([
-    { text: 'Клиентам', href: '#' },
-    { text: 'Ответы на частые вопросы' },
-  ])
+  .page__breadcrumbs.container
+    +breadcrumbs([
+      { text: 'Клиентам', href: '#' },
+      { text: 'Ответы на частые вопросы' },
+    ])
 
   +section
     h1.section__page-heading.page-heading
