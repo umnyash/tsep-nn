@@ -82,6 +82,18 @@ function initModalForm({ modalElement, openModal, sendData }) {
   })
 
   document.querySelectorAll(`[data-modal-opener="${modalName}"]`).forEach((openerElement) => {
+    const optionsElement = openerElement.closest('.options');
+
+    if (optionsElement) {
+      const linksWithData = Array.from(optionsElement.querySelectorAll('.options__variants-link--active'));
+
+      const inputsString = linksWithData.map((linkElement) => `
+        <input type="hidden" name=${linkElement.dataset.name} value=${linkElement.dataset.value}>
+      `).join('');
+
+      formElement.insertAdjacentHTML('beforeend', inputsString);
+    }
+
     openerElement.addEventListener('click', (evt) => {
       evt.preventDefault();
 

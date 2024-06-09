@@ -5,10 +5,7 @@ block variables
   - var pageClass = 'product-page'
 
 block content
-  +breadcrumbs([
-    { text: 'Цепи противоскольжения', href: '#' },
-    { text: 'Для легковых авто' },
-  ])
+  +product(product)
 
 block modals
   +modal(class='modal--position_side modal--with_form' data-modal='request')

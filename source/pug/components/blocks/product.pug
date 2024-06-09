@@ -1,0 +1,44 @@
+mixin product(product)
+  article.product&attributes(attributes)
+    .product__inner.container
+      .product__breadcrumbs
+        +breadcrumbs([
+          { text: 'Цепи противоскольжения', href: '#' },
+          { text: 'Для легковых авто' },
+        ])
+      header.product__header
+        h1.product__heading.heading= product.title
+        .product__description
+          each text in product.description
+            p.product__description-text= text
+      +photo-slider(class='product__photos')
+      section.product__section.product__section--options
+        h2.product__section-heading Варианты исполнения
+        +options({options: product.options})
+      section.product__section
+        h2.product__section-heading Достоинства модели
+        ul.product__list
+          each text in product.advantages
+            li.product__list-item= text
+      section.product__section
+        h2.product__section-heading Элементы крепления
+        .product__section-design
+          +design
+      section.product__section
+        h2.product__section-heading Тех. характеристики
+        ul.product__list
+          each text in product.specifications
+            li.product__list-item= text
+        .product__section__scheme
+          +scheme
+      section.product__section
+        h2.product__section-heading Инструкция
+        p.product__text
+          a.product__text-link(href='files/recipe.pdf' download='Инструкция в pdf') Скачать инструкцию в pdf
+      section.product__section
+        h2.product__section-heading Условия гарантии
+        p.product__text А также некоторые особенности внутренней политики преданы социально-демократической анафеме. Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: дальнейшее развитие различных форм деятельности не оставляет шанса для благоприятных перспектив
+      section.product__section.product__section--wide
+        h2.product__section-heading Характеристики
+        .product__table-wrapper
+          +adaptive-table(class='product__table')

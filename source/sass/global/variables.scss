@@ -1,5 +1,7 @@
 // Viewports
+$mobile-width: 390px;
 $tablet-width: 768px;
+$wide-tablet-width: 1024px;
 $laptop-width: 1260px;
 $desktop-width: 1580px;
 
@@ -18,3 +20,4 @@ $folds-timing-duration: 200ms;
 $folds-timing-function: ease-in-out;
 $modal-animation-duration: 450ms;
 $modal-form-animation-duration: 600ms;
+$table-row-expand-duration: 300ms;

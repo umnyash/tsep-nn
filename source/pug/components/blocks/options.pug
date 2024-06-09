@@ -1,0 +1,12 @@
+mixin options({options, modalName})
+  .options&attributes(attributes)
+    dl.options__list
+      each option in options
+        .options__item
+          dt.options__item-name= option.label
+          dd.options__item-variants
+            ul.options__variants-list
+              each variant in option.variants
+                li.options__variants-item
+                  a.options__variants-link(class= variant.isActive && 'options__variants-link--active' href= variant.isActive ? false : 'product.html'  data-name= option.name data-value= variant.value)= variant.text
+    +button({tag: 'a', text: 'Оставить заявку', href: '#'})(class='options__button button--primary' data-modal-opener='request')

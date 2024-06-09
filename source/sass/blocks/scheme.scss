@@ -1,0 +1,42 @@
+.scheme {
+  @media (min-width: $tablet-width) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+  }
+
+  @media (min-width: $desktop-width) {
+    column-gap: 20px;
+  }
+}
+
+.scheme__image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 10px;
+  outline: 1px solid var(--border-color);
+  outline-offset: -1px;
+
+  @media (min-width: 420px) {
+    max-width: 420px;
+    margin: 0 auto 10px;
+  }
+
+  @media (min-width: $tablet-width) {
+    width: 202px;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (min-width: $desktop-width) {
+    width: 243px;
+  }
+}
+
+.scheme__table {
+  width: 100%;
+}

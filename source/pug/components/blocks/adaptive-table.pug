@@ -1,0 +1,87 @@
+-
+  var rows = [
+    {
+      title: 'ЦП-Легковая 1гр-5/5-Л-цинк',
+      width: '135',
+      height: '80',
+      radius: 'R12',
+      caliber: '5/5',
+      weight: '4,6',
+    },
+    {
+      title: 'ЦП-Легковая 2гр-5/5-Л-цинк',
+      width: '175',
+      height: '70',
+      radius: 'R13',
+      caliber: '5/5',
+      weight: '5,2',
+    },
+    {
+      title: 'ЦП-Внедорожник 1гр-5/5-Л-цинк',
+      width: '205',
+      height: '70',
+      radius: 'R15',
+      caliber: '5/5',
+      weight: '7,7',
+    },
+    {
+      title: 'ЦП-Внедорожник 2гр-5/5-Л-цинк',
+      width: '215',
+      height: '90',
+      radius: 'R15',
+      caliber: '5/5',
+      weight: '7,7',
+    },
+    {
+      title: 'ЦП-Легковая 1гр-5/5-Л-цинк',
+      width: '135',
+      height: '80',
+      radius: 'R12',
+      caliber: '5/5',
+      weight: '4,6',
+    },
+    {
+      title: 'ЦП-Легковая 2гр-5/5-Л-цинк',
+      width: '175',
+      height: '70',
+      radius: 'R13',
+      caliber: '5/5',
+      weight: '5,2',
+    },
+    {
+      title: 'ЦП-Внедорожник 1гр-5/5-Л-цинк',
+      width: '205',
+      height: '70',
+      radius: 'R15',
+      caliber: '5/5',
+      weight: '7,7',
+    },
+    {
+      title: 'ЦП-Внедорожник 2гр-5/5-Л-цинк',
+      width: '215',
+      height: '90',
+      radius: 'R15',
+      caliber: '5/5',
+      weight: '7,7',
+    },
+  ];
+
+mixin adaptive-table
+  table.adaptive-table&attributes(attributes)
+    thead.adaptive-table__header
+      tr.adaptive-table__header-row
+        th.adaptive-table__header-heading-cell(scope='coll') Наименование
+        td.adaptive-table__header-cell(scope='coll') Ширина
+        td.adaptive-table__header-cell(scope='coll') Высота
+        td.adaptive-table__header-cell(scope='coll') Радиус
+        td.adaptive-table__header-cell(scope='coll') Калибр
+        td.adaptive-table__header-cell(scope='coll') Вес
+    tbody.adaptive-table__body
+      each row in rows
+        tr.adaptive-table__row
+          th.adaptive-table__heading-cell(scope='row')= row.title
+          td.adaptive-table__cell(data-label='Ширина')= row.width
+          td.adaptive-table__cell(data-label='Высота')= row.height
+          td.adaptive-table__cell(data-label='Радиус')= row.radius
+          td.adaptive-table__cell(data-label='Калибр')= row.caliber
+          td.adaptive-table__cell(data-label='Вес')= row.weight
