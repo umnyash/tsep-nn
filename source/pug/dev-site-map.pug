@@ -1,0 +1,26 @@
+extends layout/layout
+
+block variables
+  - var title = 'Статья'
+  - var pageClass = 'article-page'
+
+block content
+  .page__breadcrumbs.container
+    +breadcrumbs([
+      { text: 'Карта сайта' },
+    ])
+  ol
+    li #[a(href='index.html') Главная]
+    li #[a(href='production.html') Продукция]
+    li #[a(href='catalog-8.html') 8 категорий]
+    li #[a(href='catalog.html') Каталог]
+    li #[a(href='category.html') Каталог-категория]
+    li #[a(href='product.html') Товар]
+    li #[a(href='company.html') О компании]
+    li #[a(href='news.html') Новости]
+    li #[a(href='article.html') Статья]
+    li #[a(href='vacancies.html') Вакансии]
+    li #[a(href='faq.html') Ответы на частые вопросы]
+    li #[a(href='delivery-and-payment.html') Доставка и оплата]
+    li #[a(href='request.html') Оставить заявку]
+    li #[a(href='documents.html') Документы]
