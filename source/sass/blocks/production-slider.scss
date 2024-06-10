@@ -1,22 +1,57 @@
 .production-slider {
   font: 400 16px/16px $main-font-family;
   background: var(--background-color);
+  transition: background-color $little-interaction-duration;
+
+  &--theme_1 {
+    background: var(--background-color);
+
+    .production-slider__pagination-item {
+      background: var(--background-color-3);
+    }
+  }
+
+  &--theme_2 {
+    background: var(--background-color-2);
+
+    .production-slider__pagination-item {
+      background: var(--background-color-5);
+    }
+  }
+
+  &--theme_3 {
+    background: var(--background-color-3);
+
+    .production-slider__pagination-item {
+      background: var(--background-color-6);
+    }
+  }
 
   @media (min-width: $laptop-width) {
     font-size: 18px;
     line-height: 20px;
   }
+}
 
-  height: 100%;
+.product-slider__inner {
+  position: relative;
   width: 100%;
+  max-width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+  background: inherit;
+}
+
+.production-slider__slider {
+  background: inherit;
 }
 
 .production-slider__list {
-  max-width: $centerer-max-width;
   padding: 0;
   margin: 0 auto;
   list-style: none;
   counter-reset: types;
+  background: inherit;
 }
 
 .production-slider__item {
@@ -29,17 +64,8 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(4, auto) 1fr;
   column-gap: var(--section-column-gap);
-  background-color: var(--background-color);
+  background-color: inherit;
   counter-increment: types;
-
-  &:nth-child(2n) {
-    background-color: var(--background-color-2);
-  }
-
-  &:nth-child(4n - 1) {
-    background-color: var(--background-color-3);
-  }
-
 
   @supports (min-height: 100dvh) {
     min-height: 100dvh;
@@ -209,22 +235,36 @@
   mix-blend-mode: darken;
 }
 
-.swiper-pagination.swiper-pagination {
-  display: flex;
-  left: 10px;
+.production-slider__pagination.production-slider__pagination {
+  position: absolute;
+  top: 140px;
   right: auto;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1;
+  display: none;
+  width: auto;
+  margin: 0;
   flex-direction: column;
-  gap: 20px 2px;
+  justify-content: center;
+  gap: 20px;
 
-  .swiper-pagination-bullet {
-    width: 4px;
-    margin: 0;
-    border-radius: 0;
-    background: #e7e7e7;
-    opacity: 1;
+  @media (min-width: $laptop-width) {
+    display: flex;
   }
 
-  .swiper-pagination-bullet-active {
-    background: var(--text-color);
+  @media (min-width: $desktop-width) {
+    left: 20px;
   }
+}
+
+.production-slider__pagination-item {
+  height: 120px;
+  width: 4px;
+  background-color: var(--background-color-3);
+  transition: background-color $little-interaction-duration;
+}
+
+.production-slider__pagination-item--active.production-slider__pagination-item--active {
+  background: var(--background-dark-color);
 }

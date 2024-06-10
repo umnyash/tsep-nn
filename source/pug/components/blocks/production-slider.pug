@@ -15,7 +15,10 @@ mixin production-slider__item(type)
     +button({tag: 'a', text: 'Подробнее', href: 'catalog.html'})(class='production-slider__items-details-button button--secondary-mobile')
 
 mixin production-slider(products)
-  .production-slider.swiper&attributes(attributes)
-    ul.production-slider__list.swiper-wrapper
-      each type in products
-        +production-slider__item(type)
+  .production-slider&attributes(attributes)
+    .product-slider__inner
+      .production-slider__slider.swiper
+        ul.production-slider__list.swiper-wrapper
+          each type in products
+            +production-slider__item(type)
+        p.production-slider__pagination
