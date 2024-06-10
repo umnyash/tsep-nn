@@ -62,13 +62,13 @@
       color: transparent;
     }
 
-    &:hover {
+    &[href]:hover {
       color: transparent;
       background: var(--background-dark-color);
+    }
 
-      &::before {
-        color: var(--text-light-color);
-      }
+    &[href]:hover::before {
+      color: var(--text-light-color);
     }
   }
 
