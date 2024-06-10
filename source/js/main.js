@@ -30,4 +30,5 @@ document.querySelectorAll('.production-slider').forEach(initProductionSlider);
 
 document.querySelectorAll('.photo-slider').forEach(initPhotoSlider);
 document.querySelectorAll('.adaptive-table').forEach(initAdaptiveTable);
+document.querySelectorAll('input[type="tel"]').forEach(initTelField);
 /* * * * * * * * * * * * * * * * * * * * * * * */
