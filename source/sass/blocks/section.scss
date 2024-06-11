@@ -177,6 +177,18 @@
   }
 }
 
+.section__heading--column-span_5-4 {
+  @media (min-width: $laptop-width) {
+    grid-column: 2 / span 5;
+    text-indent: calc((100% - 4 * var(--section-column-gap)) / 5 + var(--section-column-gap));
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-column: 2 / span 4;
+    text-indent: calc((100% - 3 * var(--section-column-gap)) / 4 + var(--section-column-gap));
+  }
+}
+
 .section__text--narrow {
   @media (min-width: $tablet-width) {
     grid-column: 2 / -2;

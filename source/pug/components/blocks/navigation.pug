@@ -1,10 +1,20 @@
+//- mixin navigation({links, currentLinkNumber})
+//-   .navigation&attributes(attributes)
+//-     ul.navigation__list
+//-       each link, index in links
+//-         li.navigation__item
+//-           a.navigation__link(class=`${link.accent ? 'navigation__link--accent' : 'navigation__link--basic'} ${currentLinkNumber === index ? 'navigation__link--current' : ''}` href= (currentLinkNumber === index) ? false : link.href)
+//-             span.navigation__link-text-wrapper
+//-               span.navigation__link-text!= link.text
+//-             if link.image
+//-               img.navigation__image(src= link.image width='304' height='304' alt='')
+
 mixin navigation({links, currentLinkNumber})
   .navigation&attributes(attributes)
     ul.navigation__list
       each link, index in links
         li.navigation__item
           a.navigation__link(class=`${link.accent ? 'navigation__link--accent' : 'navigation__link--basic'} ${currentLinkNumber === index ? 'navigation__link--current' : ''}` href= (currentLinkNumber === index) ? false : link.href)
-            span.navigation__link-text-wrapper
-              span.navigation__link-text!= link.text
+            span.navigation__link-text!= link.text
             if link.image
               img.navigation__image(src= link.image width='304' height='304' alt='')
