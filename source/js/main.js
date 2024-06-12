@@ -27,7 +27,7 @@ document.querySelectorAll('form[data-name]').forEach((formElement) => {
 });
 
 document.querySelectorAll('.production-slider').forEach(initProductionSlider);
-
+document.querySelectorAll('.partial-list').forEach(initPartialList);
 document.querySelectorAll('.photo-slider').forEach(initPhotoSlider);
 document.querySelectorAll('.adaptive-table').forEach(initAdaptiveTable);
 document.querySelectorAll('input[type="tel"]').forEach(initTelField);

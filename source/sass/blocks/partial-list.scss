@@ -1,0 +1,11 @@
+.partial-list--max-number_4:not(.partial-list--expand) {
+  .partial-list__item:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+.partial-list--expand {
+  .partial-list__button {
+    display: none;
+  }
+}
