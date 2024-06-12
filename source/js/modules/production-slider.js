@@ -37,7 +37,7 @@ function initProductionSlider(sliderElement) {
   });
 
   const slidesNumber = swiper.slides.length;
-  const scrollLength = slidesNumber * 300;
+  const scrollLength = slidesNumber * 320;
 
   gsap.registerPlugin(ScrollTrigger);
 

@@ -1,11 +1,11 @@
 mixin vacancies-selection-list
   .selection-list&attributes(attributes)
     ul.selection-list__items
-      each item in [1, 2, 3, 4]
+      each item in [1, 2, 3, 4, 5, 6, 7]
         li.selection-list__item
           h3.selection-list__item-heading Ведущий менеджер по продажам
           .selection-list__item-content
             .selection-list__item-text от 50 000 руб.
             .selection-list__item-text.selection-list__item-text--weak Нижний Новгород
           +button({tag: 'a', text: 'Подробнее', href: 'https://hh.ru', target: '_blank', rel: 'noopener'})(class='selection-list__item-link button--simple button--expand')
-    +button({tag: 'a', text: 'Смотреть все вакансии', href: 'https://hh.ru', target: '_blank', rel: 'noopener'})(class='selection-list__button button--down button--secondary')
+    +button({tag: 'button', text: 'Смотреть все вакансии', type: 'button'})(class='selection-list__button button--down button--secondary')

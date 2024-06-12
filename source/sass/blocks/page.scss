@@ -34,10 +34,10 @@
 
 .page__banner {
   height: 700px;
-  max-height: 100vh;
+  max-height: 90vh;
 
-  @supports (max-height: 100dvh) {
-    max-height: 100dvh;
+  @supports (max-height: 100svh) {
+    max-height: 100svh;
   }
 
   @media (min-width: $desktop-width) {
@@ -71,13 +71,13 @@
 
 .page__production-slider {
   width: 100%;
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: 90vh;
+  max-height: 90vh;
   margin-top: 0;
 
-  @supports (max-height: 100dvh) {
-    min-height: 100dvh;
-    max-height: 100dvh;
+  @supports (max-height: 100svh) {
+    min-height: 100svh;
+    max-height: 100svh;
   }
 }
 

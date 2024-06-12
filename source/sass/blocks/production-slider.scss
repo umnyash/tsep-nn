@@ -43,10 +43,12 @@
 }
 
 .production-slider__slider {
+  height: 100%;
   background: inherit;
 }
 
 .production-slider__list {
+  height: 100%;
   padding: 0;
   margin: 0 auto;
   list-style: none;
@@ -59,17 +61,13 @@
   z-index: 0;
   display: grid;
   box-sizing: border-box;
-  min-height: 100vh;
+  height: auto;
   padding: 67px var(--edge-indent) 0;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(4, auto) 1fr;
   column-gap: var(--section-column-gap);
   background-color: inherit;
   counter-increment: types;
-
-  @supports (min-height: 100dvh) {
-    min-height: 100dvh;
-  }
 
   @media (min-width: $laptop-width) {
     padding-top: 91px;
