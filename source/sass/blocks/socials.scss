@@ -12,6 +12,7 @@
 }
 
 .socials__link-background {
+  display: block;
   stroke: currentColor;
   fill: transparent;
   opacity: 0.2;
@@ -21,7 +22,7 @@
 
 .socials__logo {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 1px);
   left: 50%;
   max-width: 18px;
   max-height: 18px;
@@ -30,6 +31,10 @@
   transform: translate(-50%, -50%);
   transition-property: fill, opacity;
   transition-duration: $medium-interaction-duration;
+
+  &--telegram {
+    left: calc(50% - 1px);
+  }
 }
 
 .socials__link:hover {

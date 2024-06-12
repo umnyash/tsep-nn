@@ -1,5 +1,5 @@
 mixin socials__logo(src, alt, width, height)
-  svg.socials__logo(width= width height= height role='img' aria-label= alt loading='lazy')
+  svg.socials__logo(width= width height= height role='img' aria-label= alt loading='lazy')&attributes(attributes)
     use(href= src)
 
 mixin socials__item(name, href)
@@ -11,7 +11,7 @@ mixin socials__item(name, href)
         when 'vk'
           +socials__logo('img/icons.svg#socials_vk', 'VK.', 18, 11)
         when 'telegram'
-          +socials__logo('img/icons.svg#socials_telegram', 'Telegram.', 18, 16)
+          +socials__logo('img/icons.svg#socials_telegram', 'Telegram.', 18, 16)(class='socials__logo--telegram')
         when 'youtube'
           +socials__logo('img/icons.svg#socials_youtube', 'YouTube.', 18, 13)
 
