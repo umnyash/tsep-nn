@@ -39,3 +39,8 @@ function lockPageScroll() {
 
   document.body.style.paddingRight = `${document.body.clientWidth - bodyWidth}px`;
 }
+
+function unlockPageScroll() {
+  document.body.classList.remove('scroll-lock');
+  document.body.style.paddingRight = '0';
+}

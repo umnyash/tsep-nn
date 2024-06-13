@@ -1,51 +1,39 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * modal.js
  */
-const openedModals = [];
-
-function openModal(modalElement) {
-  togglePageScroll();
-  modalElement.showModal();
-  openedModals.push(modalElement);
-  document.addEventListener('click', onModalClick);
-  modalElement.addEventListener('close', onModalClose);
-}
-
-function closeModal(modalElement) {
-  modalElement.close();
-  setTimeout(() => {
-    modalElement.removeEventListener('close', onModalClose);
-  }, 0);
-}
+const MODAL_CLOSING_ANIMATION_DURATION = 450;
 
 function onModalClose(evt) {
-  const closedModalElement = openedModals.pop();
+  const modalElement = evt.currentTarget;
 
-  if (closedModalElement.classList.contains('modal--with_alert')) {
-    closedModalElement.addEventListener('transitionend', (evt) => {
-      if (evt.propertyName === 'transform') {
-        closedModalElement.remove();
-      }
-    }, { once: true });
-  }
+  modalElement.removeEventListener('close', onModalClose);
+  modalElement.removeEventListener('click', onModalClick);
 
-  if (!openedModals.length) {
-    const modalInnerElement = evt.target.querySelector('.modal__inner');
-    modalInnerElement.addEventListener('transitionend', ({ target }) => {
-      if (target.classList.contains('modal') || target.classList.contains('modal__inner')) {
-        togglePageScroll();
-      }
-    }, { once: true });
+  setTimeout(() => {
+    unlockPageScroll();
+  }, MODAL_CLOSING_ANIMATION_DURATION);
 
-    document.removeEventListener('click', onModalClick);
+  if (modalElement.classList.contains('modal--with_alert')) {
+    setTimeout(() => {
+      modalElement.remove();
+    }, MODAL_CLOSING_ANIMATION_DURATION);
   }
 }
 
-function onModalClick({ target }) {
-  if (!target.classList.contains('modal__close-button') && !target.classList.contains('alert__button')) {
+function onModalClick(evt) {
+  const modalElement = evt.currentTarget;
+
+  if (!evt.target.classList.contains('modal__close-button') && !evt.target.classList.contains('alert__button')) {
     return;
   }
 
-  closeModal(openedModals.at(-1));
+  modalElement.close();
+}
+
+function openModal(modalElement) {
+  lockPageScroll();
+  modalElement.addEventListener('close', onModalClose);
+  modalElement.addEventListener('click', onModalClick);
+  modalElement.showModal();
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */
