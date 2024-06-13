@@ -448,10 +448,13 @@ function onModalClose(evt) {
 }
 function onModalClick(evt) {
   const modalElement = evt.currentTarget;
-  if (!evt.target.classList.contains('modal__close-button') && !evt.target.classList.contains('alert__button')) {
+  if (evt.target.classList.contains('modal__close-button') || evt.target.classList.contains('alert__button')) {
+    modalElement.close();
     return;
   }
-  modalElement.close();
+  if (modalElement.classList.contains('modal--with_photo') && evt.target === modalElement) {
+    modalElement.close();
+  }
 }
 function openModal(modalElement) {
   lockPageScroll();
