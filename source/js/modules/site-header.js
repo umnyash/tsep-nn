@@ -35,5 +35,6 @@ function initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation) {
   };
 
   window.addEventListener('scroll', onWindowScroll);
+  onWindowScroll();
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */
