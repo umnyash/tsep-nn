@@ -19,10 +19,12 @@
 
 .navigation__list {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
-  padding: 1px;
+  padding: 0;
   margin: 0;
   list-style: none;
+
 
   @media (min-width: 390px) {
     grid-template-columns: repeat(2, 184px);
@@ -103,10 +105,10 @@
   &::before {
     content: "";
     position: absolute;
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
-    left: -1px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: -3;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
@@ -114,10 +116,10 @@
   &::after {
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
     z-index: -2;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
