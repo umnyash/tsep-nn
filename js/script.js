@@ -615,6 +615,7 @@ function initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation) {
     pageScrollY = window.scrollY;
   };
   window.addEventListener('scroll', onWindowScroll);
+  onWindowScroll();
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
