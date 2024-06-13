@@ -90,15 +90,7 @@
   }
 
   .modal__close-button {
-    @media (max-width: ($tablet-width - 1)) {
-      display: none;
-    }
-
-    @media (min-width: $tablet-width) {
-      bottom: 100%;
-      left: 100%;
-      color: var(--text-light-color);
-    }
+    color: var(--text-light-color);
   }
 
   .modal__close-button::after {
@@ -150,6 +142,38 @@
 
     @media (min-width: $desktop-width) {
       max-width: 666px;
+    }
+  }
+
+  .modal__close-button {
+    bottom: 100%;
+    left: 100%;
+    color: var(--text-light-color);
+
+    @media (max-width: ($tablet-width - 1)) {
+      display: none;
+    }
+  }
+}
+
+.modal--position_center.modal--with_photo {
+  .modal__inner {
+    width: auto;
+    max-width: 1000px;
+    margin-top: 36px;
+
+    @media (min-width: $desktop-width) {
+      margin-top: 60px;
+    }
+  }
+
+  .modal__close-button {
+    bottom: 100%;
+    right: 0;
+    color: var(--text-light-color);
+
+    @media (min-width: $desktop-width) {
+      bottom: calc(100% + 10px);
     }
   }
 }

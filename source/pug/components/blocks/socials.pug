@@ -1,11 +1,11 @@
 mixin socials__logo(src, alt, width, height)
-  svg.socials__logo(width= width height= height role='img' aria-label= alt loading='lazy')&attributes(attributes)
+  svg.socials__logo(width= width height= height role='img' aria-label= alt)&attributes(attributes)
     use(href= src)
 
 mixin socials__item(name, href)
   li.socials__item
     a.socials__link(href= href target='_blank' rel='noopener' class=`socials__link--${name}`)
-      svg.socials__link-background(width='48' height='48' aria-hidden='true' loading='lazy')
+      svg.socials__link-background(width='48' height='48' aria-hidden='true')
         use(href='img/icons.svg#socials_hexagon')
       case name
         when 'vk'

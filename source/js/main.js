@@ -31,4 +31,8 @@ document.querySelectorAll('.partial-list').forEach(initPartialList);
 document.querySelectorAll('.photo-slider').forEach(initPhotoSlider);
 document.querySelectorAll('.adaptive-table').forEach(initAdaptiveTable);
 document.querySelectorAll('input[type="tel"]').forEach(initTelField);
+
+document.querySelectorAll('[data-modal="photo"]').forEach((modalElement) => {
+  initModalPhoto({ modalElement, openModal });
+});
 /* * * * * * * * * * * * * * * * * * * * * * * */
