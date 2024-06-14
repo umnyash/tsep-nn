@@ -7,7 +7,7 @@ mixin production-card(type)
         picture.production-card__image-wrapper
           source(media='(min-width: 1281px)' srcset=`${type.cardImage}-desktop.webp 1x, ${type.cardImage}-desktop.webp 2x`)
           source(media='(min-width: 421px)' srcset=`${type.cardImage}-laptop.webp 1x, ${type.cardImage}-laptop.webp 2x`)
-          img.production-card__image(src=`${type.cardImage}.webp` srcset=`${type.cardImage}@2x.webp` alt='')
+          img.production-card__image(src=`${type.cardImage}.webp` srcset=`${type.cardImage}@2x.webp` alt='' loading='lazy')
     p.production-card__text!= type.description
     if type.categories
       .production-card__shortcuts

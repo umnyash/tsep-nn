@@ -6,4 +6,4 @@ mixin product-card(product)
     .product-card__image-container
       picture.product-card__image-wrapper
         source(media='(min-width: 1260px)' srcset=`${product.desktopImage} 1x, ${product.desktopImage2x} 2x`)
-        img.product-card__image(src= product.image srcset=`${product.image2x} 2x` alt='')
+        img.product-card__image(src= product.image srcset=`${product.image2x} 2x` alt='' loading='lazy')
