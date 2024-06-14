@@ -10,13 +10,13 @@
   z-index: 0;
   display: grid;
   padding: 20px 0;
-  border-top: 1px solid var(--text-color-20);
+  border-top: 1px solid var(--border-color);
   font: 400 14px/15px $main-font-family;
   transition: border-color $little-interaction-duration ease;
   counter-increment: items;
 
   &:last-child {
-    border-bottom: 1px solid var(--text-color-20);
+    border-bottom: 1px solid var(--border-color);
   }
 
   @media (min-width: $tablet-width) {

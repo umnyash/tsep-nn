@@ -1,6 +1,6 @@
 .folds {
   padding: 0;
-  border-top: 1px solid var(--text-color-20);
+  border-top: 1px solid var(--border-color);
   list-style: none;
   font: 400 14px/15px $main-font-family;
   counter-reset: questions;
@@ -13,7 +13,7 @@
 }
 
 .folds__item {
-  border-bottom: 1px solid var(--text-color-20);
+  border-bottom: 1px solid var(--border-color);
   transition: padding $folds-timing-duration $folds-timing-function;
   counter-increment: questions;
 }
