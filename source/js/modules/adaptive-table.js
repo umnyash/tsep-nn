@@ -1,11 +1,23 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * adaptive-table.js
  */
-function initAdaptiveTable(tableElement) {
-  tableElement.addEventListener('click', ({ target }) => {
-    const rowElement = target.closest('.adaptive-table__row');
+function initAdaptiveTable(tableWrapperElement) {
+  const tableHeaderCellElements = tableWrapperElement.querySelectorAll('thead > tr > td');
+  const tableRowElements = tableWrapperElement.querySelectorAll('tbody > tr');
 
-    rowElement?.classList.toggle('adaptive-table__row--open');
+  tableRowElements.forEach((rowElement) => {
+    const rowCellElements = rowElement.querySelectorAll('td');
+
+    rowCellElements.forEach((rowCellElement, index) => {
+      const label = tableHeaderCellElements[index].textContent;
+      rowCellElement.dataset.label = label;
+    });
+  });
+
+  tableWrapperElement.addEventListener('click', ({ target }) => {
+    const rowElement = target.closest('tbody tr');
+
+    rowElement?.classList.toggle('open');
   });
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */

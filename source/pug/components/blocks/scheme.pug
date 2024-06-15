@@ -1,19 +1,21 @@
 mixin scheme
   .scheme&attributes(attributes)
     img.scheme__image(src='img/product/scheme.webp' width='400' height='230' alt='')
-    table.scheme__table.table
-      thead.table__header
-        tr.table__header-row
-          th.table__header-heading-cell(scope='coll')
-            span.visually-hidden Наименование
-          td.table__header-cell(scope='coll') A
-          td.table__header-cell(scope='coll') C
-        tbody.table__body
-          tr.table__row
-            th.table__heading-cell(scope='row') Цепи 5мм
-            td.table__cell 50
-            td.table__cell 23
-          tr.table__row
-            th.table__heading-cell(scope='row') Цепи 6мм
-            td.table__cell 63,5
-            td.table__cell 38,1
+    .scheme__table
+      .table-wrapper
+        table
+          thead
+            tr
+              th(scope='coll')
+                span Наименование
+              td(scope='coll') A
+              td(scope='coll') C
+            tbody
+              tr
+                th(scope='row') Цепи 5мм
+                td 50
+                td 23
+              tr
+                th(scope='row') Цепи 6мм
+                td 63,5
+                td 38,1

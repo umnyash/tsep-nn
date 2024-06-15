@@ -44,7 +44,7 @@
     "stylelint-config-htmlacademy": "4.0.5"
   },
   "browserslist": [
-    "last 4 versions",
+    "last 12 versions",
     "not dead",
     "not op_mini all",
     "not < 0.25%"

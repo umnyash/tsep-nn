@@ -67,21 +67,22 @@
   ];
 
 mixin adaptive-table
-  table.adaptive-table&attributes(attributes)
-    thead.adaptive-table__header
-      tr.adaptive-table__header-row
-        th.adaptive-table__header-heading-cell(scope='coll') Наименование
-        td.adaptive-table__header-cell(scope='coll') Ширина
-        td.adaptive-table__header-cell(scope='coll') Высота
-        td.adaptive-table__header-cell(scope='coll') Радиус
-        td.adaptive-table__header-cell(scope='coll') Калибр
-        td.adaptive-table__header-cell(scope='coll') Вес
-    tbody.adaptive-table__body
-      each row in rows
-        tr.adaptive-table__row
-          th.adaptive-table__heading-cell(scope='row')= row.title
-          td.adaptive-table__cell(data-label='Ширина')= row.width
-          td.adaptive-table__cell(data-label='Высота')= row.height
-          td.adaptive-table__cell(data-label='Радиус')= row.radius
-          td.adaptive-table__cell(data-label='Калибр')= row.caliber
-          td.adaptive-table__cell(data-label='Вес')= row.weight
+  .adaptive-table-wrapper&attributes(attributes)
+    table
+      thead
+        tr
+          th(scope='coll') Наименование
+          td(scope='coll') Ширина
+          td(scope='coll') Высота
+          td(scope='coll') Радиус
+          td(scope='coll') Калибр
+          td(scope='coll') Вес
+      tbody
+        each row in rows
+          tr
+            th(scope='row')= row.title
+            td= row.width
+            td= row.height
+            td= row.radius
+            td= row.caliber
+            td= row.weight
