@@ -11,11 +11,16 @@ function createElementByString(template) {
   newElement.innerHTML = template;
   return newElement.firstElementChild;
 }
-function debounce(callback, timeoutDelay = 500) {
+function debounce(callback) {
+  var _this = this;
+  let timeoutDelay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
   let timeoutId;
-  return (...rest) => {
+  return function () {
+    for (var _len = arguments.length, rest = new Array(_len), _key = 0; _key < _len; _key++) {
+      rest[_key] = arguments[_key];
+    }
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+    timeoutId = setTimeout(() => callback.apply(_this, rest), timeoutDelay);
   };
 }
 function togglePageScroll() {
@@ -46,12 +51,22 @@ function unlockPageScroll() {
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * adaptive-table.js
  */
-function initAdaptiveTable(tableElement) {
-  tableElement.addEventListener('click', ({
-    target
-  }) => {
-    const rowElement = target.closest('.adaptive-table__row');
-    rowElement?.classList.toggle('adaptive-table__row--open');
+function initAdaptiveTable(tableWrapperElement) {
+  const tableHeaderCellElements = tableWrapperElement.querySelectorAll('thead > tr > td');
+  const tableRowElements = tableWrapperElement.querySelectorAll('tbody > tr');
+  tableRowElements.forEach(rowElement => {
+    const rowCellElements = rowElement.querySelectorAll('td');
+    rowCellElements.forEach((rowCellElement, index) => {
+      const label = tableHeaderCellElements[index].textContent;
+      rowCellElement.dataset.label = label;
+    });
+  });
+  tableWrapperElement.addEventListener('click', _ref => {
+    let {
+      target
+    } = _ref;
+    const rowElement = target.closest('tbody tr');
+    rowElement?.classList.toggle('open');
   });
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */
@@ -85,7 +100,10 @@ function initAlertCreator(openModal) {
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * api.js
  */
-async function sendData(url, body, onSuccess = () => {}, onFail = () => {}, onFinally = () => {}) {
+async function sendData(url, body) {
+  let onSuccess = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : () => {};
+  let onFail = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : () => {};
+  let onFinally = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : () => {};
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -186,9 +204,10 @@ function initFeaturesSlider(sliderElement) {
  * map.js
  */
 const initFolds = foldsElement => {
-  foldsElement.addEventListener('click', ({
-    target
-  }) => {
+  foldsElement.addEventListener('click', _ref2 => {
+    let {
+      target
+    } = _ref2;
     const buttonElement = target.closest('.folds__button');
     if (!buttonElement) {
       return;
@@ -221,11 +240,12 @@ const formAlerts = {
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * form.js
  */
-function initForm({
-  formElement,
-  sendData,
-  showAlert
-}) {
+function initForm(_ref3) {
+  let {
+    formElement,
+    sendData,
+    showAlert
+  } = _ref3;
   const SUBMIT_BUTTON_PENDING_STATE_CLASS = 'button--pending';
   const formName = formElement.dataset.name;
   const submitButtonElement = formElement.querySelector('.form__submit-button');
@@ -317,11 +337,12 @@ async function initMap(mapElement) {
 /* * * * * * * * * * * * * * * * * * * * * * * *
  * modal-form.js
  */
-function initModalForm({
-  modalElement,
-  openModal,
-  sendData
-}) {
+function initModalForm(_ref4) {
+  let {
+    modalElement,
+    openModal,
+    sendData
+  } = _ref4;
   const SUBMIT_BUTTON_PENDING_STATE_CLASS = 'button--pending';
   const modalName = modalElement.dataset.modal;
   const innerElement = modalElement.querySelector('.modal__inner');
@@ -408,10 +429,11 @@ function initModalForm({
 }
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
-function initModalPhoto({
-  modalElement,
-  openModal
-}) {
+function initModalPhoto(_ref5) {
+  let {
+    modalElement,
+    openModal
+  } = _ref5;
   const imageElement = modalElement.querySelector('.photo__image');
   document.querySelectorAll('[data-modal-opener="photo"]').forEach(wrapperElement => {
     wrapperElement.addEventListener('click', evt => {
@@ -472,9 +494,10 @@ function initNewsSelectionList(newsSelectionElement) {
   const cursorImageElement = cursorElement.querySelector('.cursor-picture__image');
   const linkElements = newsSelectionElement.querySelectorAll('.selection-list__item-link');
   linkElements.forEach(linkElement => {
-    linkElement.addEventListener('mouseover', ({
-      target
-    }) => {
+    linkElement.addEventListener('mouseover', _ref6 => {
+      let {
+        target
+      } = _ref6;
       const imageUrl = target.parentElement.dataset.cursorImage;
       cursorImageElement.style.backgroundImage = `url("${imageUrl}")`;
       cursorElement.classList.remove('cursor-picture--hidden');
@@ -738,7 +761,7 @@ document.querySelectorAll('form[data-name]').forEach(formElement => {
 document.querySelectorAll('.production-slider').forEach(initProductionSlider);
 document.querySelectorAll('.partial-list').forEach(initPartialList);
 document.querySelectorAll('.photo-slider').forEach(initPhotoSlider);
-document.querySelectorAll('.adaptive-table').forEach(initAdaptiveTable);
+document.querySelectorAll('.adaptive-table-wrapper').forEach(initAdaptiveTable);
 document.querySelectorAll('input[type="tel"]').forEach(initTelField);
 document.querySelectorAll('[data-modal="photo"]').forEach(modalElement => {
   initModalPhoto({
