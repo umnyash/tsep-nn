@@ -33,10 +33,14 @@
   margin: 0;
 }
 
+.design__image-link {
+  margin: 0 20px 0 0;
+}
+
 .design__image {
+  display: block;
   width: 121px;
   height: 79px;
-  margin: 0 20px 0 0;
   object-fit: cover;
   object-position: right center;
   outline: 1px solid var(--border-color);
