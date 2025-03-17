@@ -18,13 +18,14 @@
 }
 
 .navigation__list {
+  position: relative;
+  z-index: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   padding: 0;
   margin: 0;
   list-style: none;
-
 
   @media (min-width: 390px) {
     grid-template-columns: repeat(2, 184px);
