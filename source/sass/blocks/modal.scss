@@ -161,23 +161,34 @@
 }
 
 .modal--position_center.modal--with_photo {
+  --indent-for-close-button: 36px;
+
+  @media (min-width: $desktop-width) {
+    --indent-for-close-button: 60px;
+  }
+
   .modal__inner {
     width: auto;
     max-width: 1000px;
-    margin-top: 36px;
-
-    @media (min-width: $desktop-width) {
-      margin-top: 60px;
-    }
+    padding-top: var(--indent-for-close-button);
+    background: transparent;
   }
 
   .modal__close-button {
-    bottom: 100%;
+    bottom: calc(100% - var(--indent-for-close-button));
     right: 0;
     color: var(--text-light-color);
 
     @media (min-width: $desktop-width) {
-      bottom: calc(100% + 10px);
+      bottom: calc(100% - var(--indent-for-close-button) + 10px);
+    }
+  }
+
+  .modal__photo--fit-screen img {
+    max-height: calc(100vh - var(--indent-for-close-button) * 2);
+
+    @supports (height: 100dvh) {
+      max-height: calc(100dvh - var(--indent-for-close-button) * 2);
     }
   }
 }
