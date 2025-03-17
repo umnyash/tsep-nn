@@ -1,24 +1,8 @@
--
-  var newsSelectionListItems = [
-    {
-      cursorImage: 'img/cursors/article-1.webp',
-    },
-    {
-      cursorImage: 'img/cursors/article-2.webp',
-    },
-    {
-      cursorImage: 'img/cursors/article-3.webp',
-    },
-    {
-      cursorImage: 'img/cursors/article-4.webp',
-    },
-  ];
-
 mixin news-selection-list
-  .selection-list.selection-list--news&attributes(attributes)
+  .selection-list&attributes(attributes)
     ul.selection-list__items.selection-list__items--alter
-      each item in newsSelectionListItems
-        li.selection-list__item(data-cursor-image= item.cursorImage)
+      each item in [0, 1, 2, 3]
+        li.selection-list__item
           h3.selection-list__item-heading Мы расширяем ассортимент высокопрочных цепей класса прочности Т8
           time.selection-list__item-date(datetime='2024-01-16') 16 января, 2024
           +button({tag: 'a', text: 'Подробнее', href: 'article.html'})(class='selection-list__item-link button--simple button--expand')

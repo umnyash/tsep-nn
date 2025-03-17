@@ -181,9 +181,3 @@
   width: 100%;
   margin: 20px 0 0;
 }
-
-.selection-list--news .selection-list__item-link {
-  @media (min-width: $laptop-width) {
-    cursor: none;
-  }
-}

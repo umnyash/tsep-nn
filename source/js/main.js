@@ -6,8 +6,6 @@ initSiteHeader(siteHeaderElement, initBurger, initSiteNavigation);
 
 const showAlert = initAlertCreator(openModal);
 
-document.querySelectorAll('.selection-list--news').forEach(initNewsSelectionList);
-
 document.querySelectorAll('.section__contacts-map').forEach(initMap);
 
 document.querySelectorAll('.certificates-list').forEach(initCertificatesList);
